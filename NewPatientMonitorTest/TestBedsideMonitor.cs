@@ -24,11 +24,9 @@ namespace NewPatientMonitorTest
              //assert
             Assert.;
 
-
             //Assert.AreEqual(testModule.Name, testName);
             //Assert.AreEqual(testModule.UpperLimit, upperLimit);
             //Assert.AreEqual(testModule.LowerLimit, lowerLimit);
-
         }
         #region Additional test attributes
        // //
@@ -55,6 +53,7 @@ namespace NewPatientMonitorTest
         [TestMethod]
         public void TestMethod1()
         {
+
           //test to ensure that the modules work 
 
         }
