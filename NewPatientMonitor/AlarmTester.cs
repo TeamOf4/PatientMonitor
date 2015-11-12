@@ -53,9 +53,5 @@ namespace NewPatientMonitor
             return (false || value > UpperLimit || value < LowerLimit);
         }
         
-
-        
-
-
     }
 }
