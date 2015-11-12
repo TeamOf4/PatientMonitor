@@ -9,7 +9,6 @@ namespace NewPatientMonitorTest
     {
 
         /*
-
         Brief Testing done to the Alarm tester class
 
         1) Creation of the alarm is good (Tests whether the alarm created matches the one setup [TestInitialize] 
@@ -17,7 +16,6 @@ namespace NewPatientMonitorTest
         3) Whether the alarm is outside the limits
         4) Test if the value setup is not zero
         5) Test if the value setup in not less (minus values)
-
             */
 
         // ARRANGE
