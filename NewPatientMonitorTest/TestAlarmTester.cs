@@ -7,6 +7,19 @@ namespace NewPatientMonitorTest
     [TestClass]
     public class TestAlarmTester
     {
+
+        /*
+
+        Brief Testing done to the Alarm tester class
+
+        1) Creation of the alarm is good (Tests whether the alarm created matches the one setup [TestInitialize] 
+        2) Whether the alarm is within limits
+        3) Whether the alarm is outside the limits
+        4) Test if the value setup is not zero
+        5) Test if the value setup in not less (minus values)
+
+            */
+
         // ARRANGE
         AlarmTester alarmTesterCreated;
 
@@ -15,8 +28,8 @@ namespace NewPatientMonitorTest
         public void setup()
         {
              alarmTesterCreated = new AlarmTester("Module Name", 12f, 54f);
+             
         }
-
         // ASSERT
        
         [TestMethod]
@@ -60,8 +73,13 @@ namespace NewPatientMonitorTest
             
 
             Assert.IsTrue(alarmTesterCreated.ValueOutsideLimits(0f));
+        }
+        [TestMethod]
+        public void AlarmDoesNotDetectMinusValues()
+        {
 
-           
+            // This test should pass if the values detected in the setup is not equal to -2f (NW)
+            Assert.IsTrue(alarmTesterCreated.ValueOutsideLimits(-2f));
         }
 
 

@@ -11,7 +11,7 @@ namespace NewPatientMonitorTest
         const string secondLine = "98,54,108,43,32";
 
         [TestMethod]
-        public void GoodCreation ()
+        public void HasGoodCreation ()
         {
 
             // Checks to see whether there is a file named DataTest within the same directory as NewPatientMonitor. (NW)
