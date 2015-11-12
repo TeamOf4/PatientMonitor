@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace NewPatientMonitor
 {
-    public class Module
+    public class Module : IModule
     {
         private string name;
         public string Name { get {return name; } set {name = value;} }

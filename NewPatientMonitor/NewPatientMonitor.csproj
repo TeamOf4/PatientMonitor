@@ -65,7 +65,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BedsideMonitor.cs" />
     <Compile Include="DefaultSettings.cs" />
+    <Compile Include="IModule.cs" />
     <Compile Include="IPatientData.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

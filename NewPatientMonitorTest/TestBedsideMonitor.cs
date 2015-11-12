@@ -2,6 +2,8 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NewPatientMonitor;
+using Moq; // Installed the Moq testing from nuget packages
 
 namespace NewPatientMonitorTest
 {
@@ -11,33 +13,25 @@ namespace NewPatientMonitorTest
     [TestClass]
     public class TestBedsideMonitor
     {
-        public TestBedsideMonitor()
+        [TestMethod]
+        public void TestAddingModule()
         {
-            //
-            // TODO: Add constructor logic here
-            //
+             //arrange
+            BedsideMonitor bedsidemonitor = new BedsideMonitor();
+            var moduleToAdd = new Mock<IModule>().Object;
+             //act
+            bedsidemonitor.AddMonitor(moduleToAdd);
+             //assert
+            Assert.;
+
+
+            //Assert.AreEqual(testModule.Name, testName);
+            //Assert.AreEqual(testModule.UpperLimit, upperLimit);
+            //Assert.AreEqual(testModule.LowerLimit, lowerLimit);
+
         }
-
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-
         #region Additional test attributes
-        //
+       // //
         // You can use the following additional attributes as you write your tests:
         //
         // Use ClassInitialize to run code before running the first test in the class
@@ -61,9 +55,8 @@ namespace NewPatientMonitorTest
         [TestMethod]
         public void TestMethod1()
         {
-            //
-            // TODO: Add test logic here
-            //
+          //test to ensure that the modules work 
+
         }
     }
 }
