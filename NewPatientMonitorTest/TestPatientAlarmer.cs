@@ -34,7 +34,6 @@ namespace TestMethodPMS
             If any of the values listed below is out of the defualt limit, it should fail
             (NW)
             */
-
             patientData.Setup(a => a.BreathingRate).Returns (13f);
             patientData.Setup(b => b.DiastolicRate).Returns(74f);
             patientData.Setup(c => c.PulseRate).Returns(60f);
@@ -68,7 +67,7 @@ namespace TestMethodPMS
         /*
 
         The test created below test each of the individual modules. In the event that a module
-        drops below the set value. The nurse will be notified. This test test whether the modules drop below the 
+        drops below the set value. The nurse will be notified. This test tests whether the modules drop below the 
         default values set in the default settings. For example BreathingRateWas Called monitors whether the value is above or below the set values.
         If the values are outside the set values the test for that particular test will pass. If however it's within the limits it will fail. 
         

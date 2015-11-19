@@ -23,7 +23,11 @@ namespace NewPatientMonitor
 
         Module Name , Lower Breathing Rate (Default Settings), Upper Breathing Rate (Default Settings)
         */
-
+        List<AlarmTester> AlarmTesters
+        {
+            get;
+            set;
+        }
         readonly AlarmTester breathingTester = new AlarmTester("Breathing Rate", DefaultSettings.LOWER_BREATHING_RATE, DefaultSettings.UPPER_BREATHING_RATE);
         readonly AlarmTester diastolicTester = new AlarmTester("Diastolic Rate", DefaultSettings.LOWER_DIASTOLIC_RATE, DefaultSettings.UPPER_DIASTOLIC_RATE);
         readonly AlarmTester pulseTester = new AlarmTester("Pulse Rate", DefaultSettings.LOWER_PULSE_RATE, DefaultSettings.UPPER_PULSE_RATE);

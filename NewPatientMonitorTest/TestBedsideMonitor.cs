@@ -14,20 +14,24 @@ namespace NewPatientMonitorTest
     public class TestBedsideMonitor
     {
         [TestMethod]
-        public void TestAddingModule()
+        public void TestAddingModuleToBedsideMonitor()
         {
              //arrange
             BedsideMonitor bedsidemonitor = new BedsideMonitor();
-            var moduleToAdd = new Mock<IModule>().Object;
-             //act
-            bedsidemonitor.AddMonitor(moduleToAdd);
-             //assert
-            Assert.;
+            var moduleToAdd = new Mock<IModule>(MockBehavior.Strict);
 
-            //Assert.AreEqual(testModule.Name, testName);
-            //Assert.AreEqual(testModule.UpperLimit, upperLimit);
-            //Assert.AreEqual(testModule.LowerLimit, lowerLimit);
+            moduleToAdd.Setup(a => a.LowerLimit).Returns(10f);
+            moduleToAdd.Setup(b => b.Name).Returns("Test");
+            moduleToAdd.Setup(c => c.UpperLimit).Returns(20f);
+
+             //act
+            bedsidemonitor.AddMonitor(moduleToAdd.Object);
+
+            //assert
+
+           Assert.IsTrue(bedsidemonitor.Bedsidemodules.Contains(moduleToAdd.Object));
         }
+
         #region Additional test attributes
        // //
         // You can use the following additional attributes as you write your tests:
@@ -51,10 +55,23 @@ namespace NewPatientMonitorTest
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void RemovingModule()
         {
+            //arrange
+            BedsideMonitor bedsidemonitor = new BedsideMonitor();
+            var moduleToRemove = new Mock<IModule>(MockBehavior.Strict);
 
-          //test to ensure that the modules work 
+            moduleToRemove.Setup(a => a.LowerLimit).Returns(10f);
+            moduleToRemove.Setup(b => b.Name).Returns("Test");
+            moduleToRemove.Setup(c => c.UpperLimit).Returns(20f);
+
+            //act
+            bedsidemonitor.AddMonitor(moduleToRemove.Object);
+            bedsidemonitor.RemoveMonitor(0);
+
+            //assert
+
+            Assert.IsFalse(bedsidemonitor.Bedsidemodules.Contains(moduleToRemove.Object));
 
         }
     }
