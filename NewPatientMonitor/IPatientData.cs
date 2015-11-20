@@ -8,10 +8,12 @@ namespace NewPatientMonitor
 {
     public interface IPatientData
     {
-        float BreathingRate { get; }
-        float DiastolicRate { get; }
-        float PulseRate { get; }
-        float SystolicRate { get; }
-        float TemperatureRate { get; }
+        List<float> values { get; }
+        
+        //float BreathingRate { get; }
+        //float DiastolicRate { get; }
+        //float PulseRate { get; }
+        //float SystolicRate { get; }
+        //float TemperatureRate { get; }
     }
 }

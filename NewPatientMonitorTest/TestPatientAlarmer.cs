@@ -34,11 +34,11 @@ namespace TestMethodPMS
             If any of the values listed below is out of the defualt limit, it should fail
             (NW)
             */
-            patientData.Setup(a => a.BreathingRate).Returns (13f);
-            patientData.Setup(b => b.DiastolicRate).Returns(74f);
-            patientData.Setup(c => c.PulseRate).Returns(60f);
-            patientData.Setup(d => d.SystolicRate).Returns(125f);
-            patientData.Setup(e => e.TemperatureRate).Returns(38f);
+            patientData.Setup(a => a.values[0]).Returns (13f);
+            patientData.Setup(b => b.values[1]).Returns(74f);
+            patientData.Setup(c => c.values[2]).Returns(60f);
+            patientData.Setup(d => d.values[3]).Returns(125f);
+            patientData.Setup(e => e.values[4]).Returns(38f);
 
             // The code above checks to see if no events are called
 
@@ -48,11 +48,11 @@ namespace TestMethodPMS
             var systolicAlarmWasCalled = false;
             var temperatureRateAlarmWasCalled = false;
           
-            patientAlarmer.BreathingRateAlarm += (sender, e) => breathingRateAlarmWasCalled = true;
-            patientAlarmer.DiastolicRateAlarm += (sender, e) => diastolicRateAlarmWasCalled = true;
-            patientAlarmer.PulseRateAlarm += (sender, e) => pulseRateAlarmWasCalled = true;
-            patientAlarmer.SystolicRateAlarm += (sender, e) => systolicAlarmWasCalled = true;
-            patientAlarmer.TemperaturerateAlarm += (sender, e) => temperatureRateAlarmWasCalled = true;
+            patientAlarmer.Module1Alarm += (sender, e) => breathingRateAlarmWasCalled = true;
+            patientAlarmer.Module2Alarm += (sender, e) => diastolicRateAlarmWasCalled = true;
+            patientAlarmer.Module3Alarm += (sender, e) => pulseRateAlarmWasCalled = true;
+            patientAlarmer.Module4Alarm += (sender, e) => systolicAlarmWasCalled = true;
+            //patientAlarmer.TemperaturerateAlarm += (sender, e) => temperatureRateAlarmWasCalled = true;
             patientAlarmer.ReadingTest(patientData.Object); 
             // ASSERT
 
@@ -74,61 +74,15 @@ namespace TestMethodPMS
         */
 
         [TestMethod]
-        public void BreathingRateWasCalled()
+        public void ValueWasCalled()
         {
             var patientData = new Mock<IPatientData>();
-            patientData.Setup(a => a.BreathingRate).Returns(9f);
+            patientData.Setup(a => a.values[0]).Returns(9f);
+
             var breathingRateAlarmWasCalled = false;
-            patientAlarmer.BreathingRateAlarm += (sender, e) => breathingRateAlarmWasCalled = true;
+            patientAlarmer.Module1Alarm += (sender, e) => breathingRateAlarmWasCalled = true;
             patientAlarmer.ReadingTest(patientData.Object);
             Assert.IsTrue(breathingRateAlarmWasCalled);
         }
-
-        [TestMethod]
-        public void DiastolicPressureRateWasCalled()
-        {
-            var patientData = new Mock<IPatientData>();
-            patientData.Setup(a => a.DiastolicRate).Returns(54f);
-            var diastolicRateAlarmWasCalled = false;
-            patientAlarmer.DiastolicRateAlarm += (sender, e) => diastolicRateAlarmWasCalled = true;
-            patientAlarmer.ReadingTest(patientData.Object);
-            Assert.IsTrue(diastolicRateAlarmWasCalled);
-        }
-
-        [TestMethod]
-        public void PulseRateWasCalled()
-        {
-            var patientData = new Mock<IPatientData>();
-            patientData.Setup(a => a.PulseRate).Returns(45f);
-            var pulseRateAlarmWasCalled = false;
-            patientAlarmer.PulseRateAlarm += (sender, e) => pulseRateAlarmWasCalled = true;
-            patientAlarmer.ReadingTest(patientData.Object);
-            Assert.IsTrue(pulseRateAlarmWasCalled);
-        }
-
-        [TestMethod]
-        public void SystolicPressureRateWasCalled()
-        {
-            var patientData = new Mock<IPatientData>();
-            patientData.Setup(a => a.SystolicRate).Returns(100f);
-            var systolicRateAlarmWasCalled = false;
-            patientAlarmer.SystolicRateAlarm += (sender, e) => systolicRateAlarmWasCalled = true;
-            patientAlarmer.ReadingTest(patientData.Object);
-            Assert.IsTrue(systolicRateAlarmWasCalled);
-        }
-
-        [TestMethod]
-        public void TemperatureRateWasCalled()
-        {
-            var patientData = new Mock<IPatientData>();
-            patientData.Setup(a => a.TemperatureRate).Returns(34f);
-            var temperatureRateAlarmWasCalled = false;
-            patientAlarmer.TemperaturerateAlarm += (sender, e) => temperatureRateAlarmWasCalled = true;
-            patientAlarmer.ReadingTest(patientData.Object);
-            Assert.IsTrue(temperatureRateAlarmWasCalled);
-        }
-
-
-
     }
 }

@@ -25,7 +25,7 @@ namespace NewPatientMonitorTest
             moduleToAdd.Setup(c => c.UpperLimit).Returns(20f);
 
              //act
-            bedsidemonitor.AddMonitor(moduleToAdd.Object);
+            bedsidemonitor.AddModule(moduleToAdd.Object);
 
             //assert
 
@@ -66,8 +66,8 @@ namespace NewPatientMonitorTest
             moduleToRemove.Setup(c => c.UpperLimit).Returns(20f);
 
             //act
-            bedsidemonitor.AddMonitor(moduleToRemove.Object);
-            bedsidemonitor.RemoveMonitor(0);
+            bedsidemonitor.AddModule(moduleToRemove.Object);
+            bedsidemonitor.RemoveModule(0);
 
             //assert
 

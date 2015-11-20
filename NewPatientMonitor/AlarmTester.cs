@@ -3,13 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/*
+Checks if the passed in values are outside of the limit for that module.
+*/
 namespace NewPatientMonitor
 {
     public class AlarmTester
     {
-        
-        // The line below gets and sets the lower limit.
+
+        // Module being tested
+        public IModule testModule
+        {
+            get;
+            set;
+        }
+
         public float LowerLimit
         {
             get;
@@ -30,15 +38,11 @@ namespace NewPatientMonitor
         }
 
         // Creates a new instance of the AlamrTester Class within the NewPatientMonitor App.
-        public AlarmTester (string moduleName, float initialLowerLimit, float initialUpperLimit)
+        public AlarmTester (IModule testModule)
         {
-            NameOfAlarm = moduleName;
-            LowerLimit = initialLowerLimit;
-            UpperLimit = initialUpperLimit;
-
-            // throw new NotImplementedException();
-
-
+            NameOfAlarm = testModule.Name;
+            LowerLimit = testModule.LowerLimit;
+            UpperLimit = testModule.UpperLimit;
         }
 
         // Checks to see whether the values is outside the limits.

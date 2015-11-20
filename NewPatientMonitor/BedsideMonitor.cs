@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/*
+Stores a list of modules installed in the bedside monitor. Can add and remove modules from
+the bedside monitor
+*/
 namespace NewPatientMonitor
 {
     public class BedsideMonitor
@@ -17,12 +20,12 @@ namespace NewPatientMonitor
             set;
         } = new List<IModule>();
 
-        public void AddMonitor(IModule moduleToBeAdded)
+        public void AddModule(IModule moduleToBeAdded)
         {
             Bedsidemodules.Add(moduleToBeAdded);
         }
 
-        public void RemoveMonitor(int indexOfModuleToBeRemoved)
+        public void RemoveModule(int indexOfModuleToBeRemoved)
         {
             Bedsidemodules.RemoveAt(indexOfModuleToBeRemoved);
         }

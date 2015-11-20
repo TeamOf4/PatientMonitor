@@ -9,7 +9,7 @@ using NewPatientMonitor;
 namespace NewPatientMonitorTest
 {
     [TestClass]
-    public class Module_Tester
+    public class TestModule
     {
         [TestMethod]
         public void ModuleCreatedWithDefaultSettings()

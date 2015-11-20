@@ -5,7 +5,7 @@ using NewPatientMonitor;
 namespace NewPatientMonitorTest
 {
     [TestClass]
-    public class PatientDataTest
+    public class TestPatientData
     {
         const string firstLine = "70,35,98,65,36.5";
         const string secondLine = "54,43,76,86,32";
@@ -33,20 +33,18 @@ namespace NewPatientMonitorTest
 
         void patientDataTestPass1 (PatientData pd)
         {
-            Assert.AreEqual(70f, pd.PulseRate);
-            Assert.AreEqual(35f, pd.BreathingRate);
-            Assert.AreEqual(98f, pd.SystolicRate);
-            Assert.AreEqual(65f, pd.DiastolicRate);
-            Assert.AreEqual(36.5f, pd.TemperatureRate);
+            Assert.AreEqual(70f, pd.values[0]);
+            Assert.AreEqual(35f, pd.values[1]);
+            Assert.AreEqual(98f, pd.values[2]);
+            Assert.AreEqual(65f, pd.values[3]);
         }
 
         void patientdataTestPass2 (PatientData pd)
         {
-            Assert.AreEqual(54f, pd.PulseRate);
-            Assert.AreEqual(43f, pd.BreathingRate);
-            Assert.AreEqual(76f, pd.SystolicRate);
-            Assert.AreEqual(86f, pd.DiastolicRate);
-            Assert.AreEqual(32f, pd.TemperatureRate);
+            Assert.AreEqual(54f, pd.values[0]);
+            Assert.AreEqual(43f, pd.values[1]);
+            Assert.AreEqual(76f, pd.values[2]);
+            Assert.AreEqual(86f, pd.values[3]);
         }
     }
 }

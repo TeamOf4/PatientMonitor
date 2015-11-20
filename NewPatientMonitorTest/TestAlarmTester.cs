@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NewPatientMonitor;
+using Moq;
 
 namespace NewPatientMonitorTest
 {
@@ -25,8 +26,13 @@ namespace NewPatientMonitorTest
         [TestInitialize]
         public void setup()
         {
-             alarmTesterCreated = new AlarmTester("Module Name", 12f, 54f);
-             
+            var moduleToAdd = new Mock<IModule>(MockBehavior.Strict);
+
+            moduleToAdd.Setup(a => a.LowerLimit).Returns(12f);
+            moduleToAdd.Setup(b => b.Name).Returns("Test");
+            moduleToAdd.Setup(c => c.UpperLimit).Returns(54f);
+
+            alarmTesterCreated = new AlarmTester(moduleToAdd.Object);
         }
         // ASSERT
        
@@ -35,10 +41,16 @@ namespace NewPatientMonitorTest
         {
             /* This test method test whether the created alarm is the same as the one setup for the test initialize above.
              If the elements below this comment is the same as the one created the test will pass, else the test will fail. (NW)*/
+            var testModule = new Mock<IModule>(MockBehavior.Strict);
 
-            Assert.AreEqual("Module Name", alarmTesterCreated.NameOfAlarm);
-            Assert.AreEqual(12f, alarmTesterCreated.LowerLimit);
-            Assert.AreEqual(54f, alarmTesterCreated.UpperLimit);
+            testModule.Setup(a => a.LowerLimit).Returns(10f);
+            testModule.Setup(b => b.Name).Returns("Test");
+            testModule.Setup(c => c.UpperLimit).Returns(20f);
+            alarmTesterCreated = new AlarmTester(testModule.Object);
+
+            Assert.AreEqual(testModule.Object.Name, alarmTesterCreated.NameOfAlarm);
+            Assert.AreEqual(testModule.Object.LowerLimit, alarmTesterCreated.LowerLimit);
+            Assert.AreEqual(testModule.Object.UpperLimit, alarmTesterCreated.UpperLimit);
         }
 
         [TestMethod]

@@ -56,13 +56,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Module_Tester.cs" />
+    <Compile Include="TestModule.cs" />
     <Compile Include="TestBedsideMonitor.cs" />
     <Compile Include="TestPatientAlarmer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestAlarmTester.cs" />
-    <Compile Include="PatientDataTest.cs" />
+    <Compile Include="TestPatientData.cs" />
     <Compile Include="TestPatientDataReader.cs" />
+    <Compile Include="TestPatientDataAccessor.cs" />
+    <Compile Include="TestMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NewPatientMonitor\NewPatientMonitor.csproj">
