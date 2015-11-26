@@ -9,7 +9,7 @@ the bedside monitor
 */
 namespace NewPatientMonitor
 {
-    public class BedsideMonitor
+    public class BedsideMonitor : IBedsideMonitor
     {
         public Module ModuleToBeAdded = new Module();
 

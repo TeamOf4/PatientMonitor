@@ -7,7 +7,7 @@ using System.IO;
 
 namespace NewPatientMonitor
 {
-    public class PatientDataReader
+    public class PatientDataReader : IPatientDataReader
     {
         StreamReader datafile;
 

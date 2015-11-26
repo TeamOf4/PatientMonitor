@@ -8,7 +8,7 @@ Checks if the passed in values are outside of the limit for that module.
 */
 namespace NewPatientMonitor
 {
-    public class AlarmTester
+    public class AlarmTester : IAlarmTester
     {
 
         // Module being tested
@@ -50,7 +50,7 @@ namespace NewPatientMonitor
         // || OR Operator
 
         // If value is greater than OR less than value.
-        public bool ValueOutsideLimits (float value)
+        public bool ValueOutsideLimits(float value)
         {
             // throw new NotImplementedException();
 

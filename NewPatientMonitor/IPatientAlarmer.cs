@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace NewPatientMonitor
 {
-    public class PatientMonitoringController
+    public interface IPatientAlarmer
     {
-        public void main()
-        {
-        }
+        List<IAlarmTester> AlarmTesters { get; set; }
+        void readingTest();
     }
 }
