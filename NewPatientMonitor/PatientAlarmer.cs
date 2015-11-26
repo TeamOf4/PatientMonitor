@@ -8,7 +8,7 @@ HELP
 */
 namespace NewPatientMonitor
 {
-    public class PatientAlarmer
+    public class PatientAlarmer : IPatientAlarmer
     {
         
         public event EventHandler Module1Alarm;
@@ -24,58 +24,39 @@ namespace NewPatientMonitor
 
         Module Name , Lower Breathing Rate (Default Settings), Upper Breathing Rate (Default Settings)
         */
-        public List<AlarmTester> AlarmTesters
+        public List<IAlarmTester> AlarmTesters
         {
             get;
             set;
 
-        } = new List<AlarmTester>(4);
-
-        
-        //readonly AlarmTester breathingTester = new AlarmTester();
-        //readonly AlarmTester diastolicTester = new AlarmTester("Diastolic Rate", DefaultSettings.LOWER_DIASTOLIC_RATE, DefaultSettings.UPPER_DIASTOLIC_RATE);
-        //readonly AlarmTester pulseTester = new AlarmTester("Pulse Rate", DefaultSettings.LOWER_PULSE_RATE, DefaultSettings.UPPER_PULSE_RATE);
-        //readonly AlarmTester systolicTester = new AlarmTester("Systolic Rate", DefaultSettings.LOWER_SYSTOLIC_RATE, DefaultSettings.UPPER_SYSTOLIC_RATE);
-        //readonly AlarmTester temperatureTester = new AlarmTester("Temperature Rate", DefaultSettings.LOWER_TEMPERATURE_RATE, DefaultSettings.UPPER_TEMPERATURE_RATE);
-        
-        //public PatientAlarmer = new
-        //public AlarmTester { get { return breathingTester; } }
-        //public AlarmTester DiastolicRateTester { get { return diastolicTester; } }
-        //public AlarmTester PulseRateTester { get { return pulseTester; } }
-        //public AlarmTester SystolicRateTester { get { return systolicTester; } }
-        //public AlarmTester TemperatureRateTester { get { return temperatureTester; } }
+        } = new List<IAlarmTester>(4);
        
-        public void ReadingTest(IPatientData reading)
+        public void ReadingTest(IPatientData reading, int bedNumber)
         {
-            for (int i = 0; i < 4; i++)
+            bed tempBed = new bed();
+
+            try
             {
-                if (AlarmTesters[i].ValueOutsideLimits(reading.values[i]))
+                for (int i = 0; i < 4; i++)
                 {
-                   
+                    AlarmTesters.Add(new AlarmTester(tempBed.beds[bedNumber].Bedsidemodules[i]));
+                    if (AlarmTesters[i].ValueOutsideLimits(reading.values[i]))
+                    {
+                        soundAlarm();
+                    }
                 }
             }
+            catch (System.ArgumentOutOfRangeException)
+            {
+            }
+            
+            }
+        
 
-            //if (breathingTester.ValueOutsideLimits (reading.BreathingRate))
-            //{
-            //    if (BreathingRateAlarm != null) BreathingRateAlarm(this, null); 
-            //}
-            //if (diastolicTester.ValueOutsideLimits (reading.DiastolicRate))
-            //{
-            //    if (DiastolicRateAlarm != null) DiastolicRateAlarm(this, null);
-            //}
-            //if (pulseTester.ValueOutsideLimits (reading.PulseRate))
-            //{
-            //    if (PulseRateAlarm != null) PulseRateAlarm(this, null);
-            //}
-            //if (systolicTester.ValueOutsideLimits (reading.SystolicRate))
-            //{
-            //    if (SystolicRateAlarm != null) SystolicRateAlarm(this, null);
-            //}
-            //if (temperatureTester.ValueOutsideLimits (reading.TemperatureRate))
-            //{
-            //    if (TemperaturerateAlarm != null) TemperaturerateAlarm(this, null);
-            //}
+        void soundAlarm()
+        {
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"D:\PatientMonitor\NewPatientMonitor\bin\Debug\Resources\Mutable.wav");
+            player.Play();
         }
-
     }
 }

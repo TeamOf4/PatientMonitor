@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace NewPatientMonitor
 {
-    public class PatientMonitoringController
+    interface IPatientFactory
     {
-        public void main()
-        {
-        }
+         object createAndReturnObj(PatientClassesEnumeration objectToGet);
     }
 }

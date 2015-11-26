@@ -6,10 +6,5 @@ using System.Threading.Tasks;
 
 namespace NewPatientMonitor
 {
-    public class PatientMonitoringController
-    {
-        public void main()
-        {
-        }
-    }
+    public enum PatientClassesEnumeration { PatientDataReader, PatientData, PatientAlarmer }    
 }

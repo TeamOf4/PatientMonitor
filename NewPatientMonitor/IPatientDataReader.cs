@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace NewPatientMonitor
 {
-    public class PatientMonitoringController
+    interface IPatientDataReader
     {
-        public void main()
-        {
-        }
+        string memberName { get; set; }
+
+        void connect();
+        string getData();
+        void setPatientData();
     }
 }

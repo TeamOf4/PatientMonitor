@@ -2,6 +2,7 @@
 using Moq; // Installed the Moq testing from nuget packages
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NewPatientMonitor; //This Using line was added because it will use the NewPatientMonitor
+using System.Collections.Generic;
 
 
 namespace TestMethodPMS
@@ -53,7 +54,7 @@ namespace TestMethodPMS
             patientAlarmer.Module3Alarm += (sender, e) => pulseRateAlarmWasCalled = true;
             patientAlarmer.Module4Alarm += (sender, e) => systolicAlarmWasCalled = true;
             //patientAlarmer.TemperaturerateAlarm += (sender, e) => temperatureRateAlarmWasCalled = true;
-            patientAlarmer.ReadingTest(patientData.Object); 
+            patientAlarmer.ReadingTest(patientData.Object, 0); 
             // ASSERT
 
             Assert.IsFalse(breathingRateAlarmWasCalled);
@@ -77,11 +78,12 @@ namespace TestMethodPMS
         public void ValueWasCalled()
         {
             var patientData = new Mock<IPatientData>();
-            patientData.Setup(a => a.values[0]).Returns(9f);
+            // patientData.Setup(a => a.values[0]).Returns(9f);
+            patientData.Setup(a => a.values).Returns(() => new List<float> { 9f, 9f, 9f, 9f });
 
             var breathingRateAlarmWasCalled = false;
             patientAlarmer.Module1Alarm += (sender, e) => breathingRateAlarmWasCalled = true;
-            patientAlarmer.ReadingTest(patientData.Object);
+            patientAlarmer.ReadingTest(patientData.Object,0);
             Assert.IsTrue(breathingRateAlarmWasCalled);
         }
     }

@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace NewPatientMonitor
 {
-    public class PatientMonitoringController
+    class PatientFactory : IPatientFactory
     {
-        public void main()
-        {
-        }
     }
 }
