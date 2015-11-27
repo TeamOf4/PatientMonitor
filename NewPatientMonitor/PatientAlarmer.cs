@@ -42,7 +42,10 @@ namespace NewPatientMonitor
                     AlarmTesters.Add(new AlarmTester(tempBed.beds[bedNumber].Bedsidemodules[i]));
                     if (AlarmTesters[i].ValueOutsideLimits(reading.values[i]))
                     {
-                        soundAlarm();
+                        // soundAlarm();
+                        throw new NotImplementedException();
+
+
                     }
                 }
             }
@@ -57,6 +60,11 @@ namespace NewPatientMonitor
         {
             System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"D:\PatientMonitor\NewPatientMonitor\bin\Debug\Resources\Mutable.wav");
             player.Play();
+        }
+
+        public void readingTest()
+        {
+            throw new NotImplementedException();
         }
     }
 }
