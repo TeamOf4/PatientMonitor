@@ -8,5 +8,9 @@ namespace NewPatientMonitor
 {
     class PatientFactory : IPatientFactory
     {
+        public object createAndReturnObj(PatientClassesEnumeration objectToGet)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -25,6 +25,24 @@ namespace NewPatientMonitor
             // to do initialization
         }
 
+        public string memberName
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public void connect()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Connect (string fileName)
         {
             datafile = new StreamReader(fileName);
@@ -41,6 +59,9 @@ namespace NewPatientMonitor
             // to do initialization
         }
 
-        
+        public void setPatientData()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
