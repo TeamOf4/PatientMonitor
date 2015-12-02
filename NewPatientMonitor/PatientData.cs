@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace NewPatientMonitor
 {
     public class PatientData : IPatientData
     {
-        public List<float>  values { get; set; } = new List<float>();
+        public List<float>  Values { get; set; } = new List<float>();
 
         //public float BreathingRate { get; private set; }
         //public float DiastolicRate { get; private set; }
@@ -34,7 +30,7 @@ namespace NewPatientMonitor
             // Loops through the number of modules and adds them to the values list
             for (int i = 0; i < 4; i++)
             {
-                values.Add(float.Parse(dataItems[i]));
+                Values.Add(float.Parse(dataItems[i]));
 
             }
 

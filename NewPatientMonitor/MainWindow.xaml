@@ -7,19 +7,19 @@
         mc:Ignorable="d"
         Title="Patient Monitor" Height="500" Width="1000">
     <Grid Margin="0,0,-410,-232">
-        <Label x:Name="label" Content="Heart Rate" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="43,139,0,0"/>
-        <Label x:Name="label1" Content="Breathing Rate" HorizontalAlignment="Left" Margin="43,170,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label2" Content="Systolic Rate" HorizontalAlignment="Left" Margin="43,201,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label3" Content="Diastolic Rate" HorizontalAlignment="Left" Margin="43,232,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label4" Content="Temperature Rate" HorizontalAlignment="Left" Margin="43,263,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label5" Content="Bed 1" HorizontalAlignment="Left" Margin="193,93,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label6" Content="Bed No" HorizontalAlignment="Left" Margin="43,93,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label7" Content="Bed 2" HorizontalAlignment="Left" Margin="274,93,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label8" Content="Bed 3" HorizontalAlignment="Left" Margin="360,93,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label9" Content="Bed 4" HorizontalAlignment="Left" Margin="443,93,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label10" Content="Bed 5" HorizontalAlignment="Left" Margin="527,93,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label11" Content="Bed 6" HorizontalAlignment="Left" Margin="612,93,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label12" Content="Bed 7" HorizontalAlignment="Left" Margin="689,93,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label13" Content="Bed 8" HorizontalAlignment="Left" Margin="780,93,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Label" Content="Heart Rate" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="43,139,0,0"/>
+        <Label x:Name="Label1" Content="Breathing Rate" HorizontalAlignment="Left" Margin="43,170,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Label2" Content="Systolic Rate" HorizontalAlignment="Left" Margin="43,201,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Label3" Content="Diastolic Rate" HorizontalAlignment="Left" Margin="43,232,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Label4" Content="Temperature Rate" HorizontalAlignment="Left" Margin="43,263,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Label5" Content="Bed 1" HorizontalAlignment="Left" Margin="193,93,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Label6" Content="Bed No" HorizontalAlignment="Left" Margin="43,93,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Label7" Content="Bed 2" HorizontalAlignment="Left" Margin="274,93,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Label8" Content="Bed 3" HorizontalAlignment="Left" Margin="360,93,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Label9" Content="Bed 4" HorizontalAlignment="Left" Margin="443,93,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Label10" Content="Bed 5" HorizontalAlignment="Left" Margin="527,93,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Label11" Content="Bed 6" HorizontalAlignment="Left" Margin="612,93,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Label12" Content="Bed 7" HorizontalAlignment="Left" Margin="689,93,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Label13" Content="Bed 8" HorizontalAlignment="Left" Margin="780,93,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

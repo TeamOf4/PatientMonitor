@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace NewPatientMonitor
 {
     public class PatientDataReader : IPatientDataReader
     {
-        StreamReader datafile;
+        StreamReader _datafile;
 
         public PatientDataReader()
         {
@@ -18,14 +14,14 @@ namespace NewPatientMonitor
 
         public PatientDataReader(string fileName)
         {
-            datafile = new StreamReader(fileName);
+            _datafile = new StreamReader(fileName);
 
-            datafile.ReadLine();
+            _datafile.ReadLine();
             // throw new NotImplementedException();
             // to do initialization
         }
 
-        public string memberName
+        public string MemberName
         {
             get
             {
@@ -38,28 +34,28 @@ namespace NewPatientMonitor
             }
         }
 
-        public void connect()
+        public void Connect()
         {
             throw new NotImplementedException();
         }
 
         public void Connect (string fileName)
         {
-            datafile = new StreamReader(fileName);
+            _datafile = new StreamReader(fileName);
 
-            datafile.ReadLine();
+            _datafile.ReadLine();
             // throw new NotImplementedException();
             // to do initialization
         }
 
-        public string getData()
+        public string GetData()
         {
-            return datafile.ReadLine();
+            return _datafile.ReadLine();
             // throw new NotImplementedException();
             // to do initialization
         }
 
-        public void setPatientData()
+        public void SetPatientData()
         {
             throw new NotImplementedException();
         }

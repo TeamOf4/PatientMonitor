@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-/*
+﻿/*
 Checks if the passed in values are outside of the limit for that module.
 */
 namespace NewPatientMonitor
@@ -12,7 +7,7 @@ namespace NewPatientMonitor
     {
 
         // Module being tested
-        public IModule testModule
+        public IModule TestModule
         {
             get;
             set;
@@ -54,7 +49,7 @@ namespace NewPatientMonitor
         {
             // throw new NotImplementedException();
 
-            return (false || value > UpperLimit || value < LowerLimit);
+            return (value > UpperLimit || value < LowerLimit);
         }
         
     }

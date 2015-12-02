@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 /*
 HELP
 */
@@ -33,16 +31,16 @@ namespace NewPatientMonitor
        
         public void ReadingTest(IPatientData reading, int bedNumber)
         {
-            bed tempBed = new bed();
+            Bed tempBed = new Bed();
 
             try
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    AlarmTesters.Add(new AlarmTester(tempBed.beds[bedNumber].Bedsidemodules[i]));
-                    if (AlarmTesters[i].ValueOutsideLimits(reading.values[i]))
+                    AlarmTesters.Add(new AlarmTester(tempBed.Beds[bedNumber].Bedsidemodules[i]));
+                    if (AlarmTesters[i].ValueOutsideLimits(reading.Values[i]))
                     {
-                        // soundAlarm();
+                        // SoundAlarm();
                         throw new NotImplementedException();
 
 
@@ -56,13 +54,13 @@ namespace NewPatientMonitor
             }
         
 
-        void soundAlarm()
+        void SoundAlarm()
         {
             System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"D:\PatientMonitor\NewPatientMonitor\bin\Debug\Resources\Mutable.wav");
             player.Play();
         }
 
-        public void readingTest()
+        public void ReadingTest()
         {
             throw new NotImplementedException();
         }

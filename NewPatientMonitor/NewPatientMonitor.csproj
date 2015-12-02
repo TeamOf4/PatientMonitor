@@ -65,7 +65,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="bed.cs" />
+    <Compile Include="Bed.cs" />
     <Compile Include="BedsideMonitor.cs" />
     <Compile Include="DefaultSettings.cs" />
     <Compile Include="IAlarmTester.cs" />
@@ -85,6 +85,8 @@
     <Compile Include="PatientAlarmer.cs" />
     <Compile Include="PatientClassesEnumeration.cs" />
     <Compile Include="PatientData.cs" />
+    <Compile Include="IPatientDataAccessor.cs" />
+    <Compile Include="PatientDataAccessor.cs" />
     <Compile Include="PatientDataReader.cs" />
     <Compile Include="PatientFactory.cs" />
     <Compile Include="PatientMonitoringController.cs" />

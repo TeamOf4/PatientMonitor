@@ -1,27 +1,29 @@
-﻿using System;
-using Moq; // Installed the Moq testing from nuget packages
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NewPatientMonitor; //This Using line was added because it will use the NewPatientMonitor
-using System.Collections.Generic;
+using Moq;
+using NewPatientMonitor;
+// Installed the Moq testing from nuget packages
+//This Using line was added because it will use the NewPatientMonitor
 
 
-namespace TestMethodPMS
+namespace NewPatientMonitorTest
 {
     [TestClass]
     public class TestPatientAlarmer
     {
-        PatientAlarmer patientAlarmer;
+        PatientAlarmer _patientAlarmer;
 
         [TestInitialize]
-        public void setup ()
+        public void Setup ()
         {
-            patientAlarmer = new PatientAlarmer();
+            _patientAlarmer = new PatientAlarmer();
         }
 
 
         [TestMethod]
         public void IfNoEventsCalled()
         {
+            // ARRANGE
             // ARRANGE
 
             var patientData = new Mock<IPatientData>();
@@ -36,10 +38,10 @@ namespace TestMethodPMS
             (NW)
             */
 
-            patientData.Setup(a => a.values).Returns(() => new List<float> { 13 /*, 13, 13, 13 */ });
-            patientData.Setup(b => b.values).Returns(() => new List<float> { 74 /*, 74, 74, 74 */});
-            patientData.Setup(c => c.values).Returns(() => new List<float> { 60 /*, 60, 60, 60 */});
-            patientData.Setup(d => d.values).Returns(() => new List<float> { 125/*, 125, 125, 125 */});
+            patientData.Setup(a => a.Values).Returns(() => new List<float> { 13 /*, 13, 13, 13 */ });
+            patientData.Setup(b => b.Values).Returns(() => new List<float> { 74 /*, 74, 74, 74 */});
+            patientData.Setup(c => c.Values).Returns(() => new List<float> { 60 /*, 60, 60, 60 */});
+            patientData.Setup(d => d.Values).Returns(() => new List<float> { 125/*, 125, 125, 125 */});
 
 
             /*patientData.Setup(a => a.values[0]).Returns (13f);
@@ -55,12 +57,12 @@ namespace TestMethodPMS
             var systolicAlarmWasCalled = false;
             var temperatureRateAlarmWasCalled = false;
           
-            patientAlarmer.Module1Alarm += (sender, e) => breathingRateAlarmWasCalled = true;
-            patientAlarmer.Module2Alarm += (sender, e) => diastolicRateAlarmWasCalled = true;
-            patientAlarmer.Module3Alarm += (sender, e) => pulseRateAlarmWasCalled = true;
-            patientAlarmer.Module4Alarm += (sender, e) => systolicAlarmWasCalled = true;
+            _patientAlarmer.Module1Alarm += (sender, e) => breathingRateAlarmWasCalled = true;
+            _patientAlarmer.Module2Alarm += (sender, e) => diastolicRateAlarmWasCalled = true;
+            _patientAlarmer.Module3Alarm += (sender, e) => pulseRateAlarmWasCalled = true;
+            _patientAlarmer.Module4Alarm += (sender, e) => systolicAlarmWasCalled = true;
             //patientAlarmer.TemperaturerateAlarm += (sender, e) => temperatureRateAlarmWasCalled = true;
-            patientAlarmer.ReadingTest(patientData.Object, 0); 
+            _patientAlarmer.ReadingTest(patientData.Object, 0); 
 
             Assert.IsFalse(breathingRateAlarmWasCalled);
             Assert.IsFalse(diastolicRateAlarmWasCalled);
@@ -77,11 +79,11 @@ namespace TestMethodPMS
         {
             var patientData = new Mock<IPatientData>();
 
-            patientData.Setup(a => a.values).Returns(() => new List<float> { 9f, 9f, 9f, 9f });
+            patientData.Setup(a => a.Values).Returns(() => new List<float> { 9f, 9f, 9f, 9f });
 
             var breathingRateAlarmWasCalled = false;
-            patientAlarmer.Module1Alarm += (sender, e) => breathingRateAlarmWasCalled = true;
-            patientAlarmer.ReadingTest(patientData.Object,0);
+            _patientAlarmer.Module1Alarm += (sender, e) => breathingRateAlarmWasCalled = true;
+            _patientAlarmer.ReadingTest(patientData.Object,0);
             Assert.IsTrue(breathingRateAlarmWasCalled);
         }
     }

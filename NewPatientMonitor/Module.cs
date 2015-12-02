@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-/* Modules class to create new monitors 
+﻿/* Modules class to create new monitors 
  *  Each module has a name string and an upper and lower value
  *  These values can be set when a module is created or updated later
  *  If a module is created without these values default values from DefaultSettings will be used
@@ -14,28 +8,25 @@ namespace NewPatientMonitor
 {
     public class Module : IModule
     {
-        private string name;
-        public string Name { get {return name; } set {name = value;} }
+        public string Name { get; set; }
 
-        private float lowerLimit;
-        public float LowerLimit { get { return lowerLimit; } set { lowerLimit = value; } }
+        public float LowerLimit { get; set; }
 
-        private float upperLimit;
-        public float UpperLimit { get { return upperLimit; } set { upperLimit = value; } }
+        public float UpperLimit { get; set; }
 
         public Module()
         {
-            Name = DefaultSettings.NEW_MODULE_NAME;
-            LowerLimit = DefaultSettings.LOWER_DEFAULT_VALUE;
-            UpperLimit = DefaultSettings.UPPER_DEFAULT_VALUE;
+            Name = DefaultSettings.NewModuleName;
+            LowerLimit = DefaultSettings.LowerDefaultValue;
+            UpperLimit = DefaultSettings.UpperDefaultValue;
 
         }
 
         public Module(string name)
         {
             Name = name;
-            LowerLimit = DefaultSettings.LOWER_DEFAULT_VALUE;
-            UpperLimit = DefaultSettings.UPPER_DEFAULT_VALUE;
+            LowerLimit = DefaultSettings.LowerDefaultValue;
+            UpperLimit = DefaultSettings.UpperDefaultValue;
         }
 
         public Module(string name, float lowerLimit, float upperLimit)

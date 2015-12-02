@@ -1,38 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NewPatientMonitor
 {
-    public class bed
+    public class Bed
     {
-        public List<BedsideMonitor> beds { get; set; } = new List<BedsideMonitor>();
+        public List<BedsideMonitor> Beds { get; set; } = new List<BedsideMonitor>();
         
-        public bed()
+        public Bed()
         {
             for(int i = 0; i < 8; i++)
             {
-                createBed();
+                CreateBed();
             }
 
-            for (int i = 0; i < beds.Count(); i++)
+            for (int i = 0; i < Beds.Count(); i++)
             {
-                beds[i].AddModule(new Module(DefaultSettings.BREATHING_RATE_NAME, DefaultSettings.LOWER_BREATHING_RATE, DefaultSettings.UPPER_BREATHING_RATE));
-                beds[i].AddModule(new Module(DefaultSettings.DIASTOLIC_RATE_NAME, DefaultSettings.LOWER_DIASTOLIC_RATE, DefaultSettings.UPPER_DIASTOLIC_RATE));
-                beds[i].AddModule(new Module(DefaultSettings.PULSE_RATE_NAME, DefaultSettings.LOWER_PULSE_RATE, DefaultSettings.UPPER_PULSE_RATE));
-                beds[i].AddModule(new Module(DefaultSettings.SYSTOLIC_RATE_NAME, DefaultSettings.LOWER_SYSTOLIC_RATE, DefaultSettings.UPPER_SYSTOLIC_RATE));
+                Beds[i].AddModule(new Module(DefaultSettings.BreathingRateName, DefaultSettings.LowerBreathingRate, DefaultSettings.UpperBreathingRate));
+                Beds[i].AddModule(new Module(DefaultSettings.DiastolicRateName, DefaultSettings.LowerDiastolicRate, DefaultSettings.UpperDiastolicRate));
+                Beds[i].AddModule(new Module(DefaultSettings.PulseRateName, DefaultSettings.LowerPulseRate, DefaultSettings.UpperPulseRate));
+                Beds[i].AddModule(new Module(DefaultSettings.SystolicRateName, DefaultSettings.LowerSystolicRate, DefaultSettings.UpperSystolicRate));
             }
         }
-        public void createBed()
+        public void CreateBed()
         {
-            beds.Add(new BedsideMonitor());
+            Beds.Add(new BedsideMonitor());
         }
 
-        public void removeBed(int index)
+        public void RemoveBed(int index)
         {
-            beds.RemoveAt(index);
+            Beds.RemoveAt(index);
         }
 
         

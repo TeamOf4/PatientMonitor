@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NewPatientMonitor;
 
 namespace NewPatientMonitorTest
@@ -7,8 +6,8 @@ namespace NewPatientMonitorTest
     [TestClass]
     public class TestPatientDataReader
     {
-        const string firstLine = "45,24,110,65,32.5";
-        const string secondLine = "98,54,108,43,32";
+        const string FirstLine = "45,24,110,65,32.5";
+        const string SecondLine = "98,54,108,43,32";
 
         [TestMethod]
         public void HasGoodCreation ()
@@ -31,8 +30,8 @@ namespace NewPatientMonitorTest
         {
             var dataReader = new PatientDataReader();
             dataReader.Connect(@"..\..\..\DataTest.csv");
-            Assert.AreEqual(firstLine, dataReader.getData());
-            Assert.AreEqual(secondLine, dataReader.getData());
+            Assert.AreEqual(FirstLine, dataReader.GetData());
+            Assert.AreEqual(SecondLine, dataReader.GetData());
         }
     }
 }

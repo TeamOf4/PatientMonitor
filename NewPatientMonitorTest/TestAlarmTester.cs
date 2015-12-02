@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NewPatientMonitor;
 using Moq;
 
@@ -20,11 +19,11 @@ namespace NewPatientMonitorTest
             */
 
         // ARRANGE
-        AlarmTester alarmTesterCreated;
+        AlarmTester _alarmTesterCreated;
 
         // ACT
         [TestInitialize]
-        public void setup()
+        public void Setup()
         {
             var moduleToAdd = new Mock<IModule>(MockBehavior.Strict);
 
@@ -32,7 +31,7 @@ namespace NewPatientMonitorTest
             moduleToAdd.Setup(b => b.Name).Returns("Test");
             moduleToAdd.Setup(c => c.UpperLimit).Returns(54f);
 
-            alarmTesterCreated = new AlarmTester(moduleToAdd.Object);
+            _alarmTesterCreated = new AlarmTester(moduleToAdd.Object);
         }
         // ASSERT
        
@@ -46,11 +45,11 @@ namespace NewPatientMonitorTest
             testModule.Setup(a => a.LowerLimit).Returns(10f);
             testModule.Setup(b => b.Name).Returns("Test");
             testModule.Setup(c => c.UpperLimit).Returns(20f);
-            alarmTesterCreated = new AlarmTester(testModule.Object);
+            _alarmTesterCreated = new AlarmTester(testModule.Object);
 
-            Assert.AreEqual(testModule.Object.Name, alarmTesterCreated.NameOfAlarm);
-            Assert.AreEqual(testModule.Object.LowerLimit, alarmTesterCreated.LowerLimit);
-            Assert.AreEqual(testModule.Object.UpperLimit, alarmTesterCreated.UpperLimit);
+            Assert.AreEqual(testModule.Object.Name, _alarmTesterCreated.NameOfAlarm);
+            Assert.AreEqual(testModule.Object.LowerLimit, _alarmTesterCreated.LowerLimit);
+            Assert.AreEqual(testModule.Object.UpperLimit, _alarmTesterCreated.UpperLimit);
         }
 
         [TestMethod]
@@ -59,9 +58,9 @@ namespace NewPatientMonitorTest
             /* This test method will test whether the alarm values are in between the values 12f and 54f. 
              If the values fall in between 12 and 54 the test should pass. (NW) */
 
-            Assert.IsFalse(alarmTesterCreated.ValueOutsideLimits (13f));
-            Assert.IsFalse(alarmTesterCreated.ValueOutsideLimits (53f));
-            Assert.IsFalse(alarmTesterCreated.ValueOutsideLimits(41f));
+            Assert.IsFalse(_alarmTesterCreated.ValueOutsideLimits (13f));
+            Assert.IsFalse(_alarmTesterCreated.ValueOutsideLimits (53f));
+            Assert.IsFalse(_alarmTesterCreated.ValueOutsideLimits(41f));
         
         }
 
@@ -71,9 +70,9 @@ namespace NewPatientMonitorTest
             /* This test method will test whether the values are outside the setup values 12f and 54f.
                If they are outside the test should pass. If in between should fail. (NW) */
 
-            Assert.IsTrue(alarmTesterCreated.ValueOutsideLimits(11f));
-            Assert.IsTrue(alarmTesterCreated.ValueOutsideLimits(9f));
-            Assert.IsTrue(alarmTesterCreated.ValueOutsideLimits(65f));
+            Assert.IsTrue(_alarmTesterCreated.ValueOutsideLimits(11f));
+            Assert.IsTrue(_alarmTesterCreated.ValueOutsideLimits(9f));
+            Assert.IsTrue(_alarmTesterCreated.ValueOutsideLimits(65f));
         }
 
         [TestMethod]
@@ -82,14 +81,14 @@ namespace NewPatientMonitorTest
             // This test should pass since the values setup is above 0. (NW)
             
 
-            Assert.IsTrue(alarmTesterCreated.ValueOutsideLimits(0f));
+            Assert.IsTrue(_alarmTesterCreated.ValueOutsideLimits(0f));
         }
         [TestMethod]
         public void AlarmDoesNotDetectMinusValues()
         {
 
             // This test should pass if the values detected in the setup is not equal to -2f (NW)
-            Assert.IsTrue(alarmTesterCreated.ValueOutsideLimits(-2f));
+            Assert.IsTrue(_alarmTesterCreated.ValueOutsideLimits(-2f));
         }
 
 

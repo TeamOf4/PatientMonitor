@@ -1,5 +1,4 @@
-﻿using System;
-namespace NewPatientMonitor
+﻿namespace NewPatientMonitor
 {
     public interface IModule
     {
