@@ -32,7 +32,11 @@ namespace NewPatientMonitor
         public event EventHandler Module3Alarm;
         public event EventHandler Module4Alarm;
 
-        private IBedsideMonitor BedsideMonitorToTest { get; set; }
+        private IBedsideMonitor BedsideMonitorToTest
+        {
+            get;
+            set;
+        }
 
         public void GetBedsideMonitor(IBedsideMonitor bedsideMonitorToTest)
         {
