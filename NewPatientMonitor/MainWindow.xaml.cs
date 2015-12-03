@@ -24,5 +24,17 @@ namespace NewPatientMonitor
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Change_limits change = new Change_limits();
+            change.Show();  
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Alarm alarm = new Alarm();
+            alarm.Show();
+        }
     }
 }
