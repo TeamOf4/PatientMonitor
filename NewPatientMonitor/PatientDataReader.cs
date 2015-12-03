@@ -13,35 +13,13 @@ namespace NewPatientMonitor
 
         public PatientDataReader(string fileName)
         {
-            _datafile = new StreamReader(fileName);
-
-            _datafile.ReadLine();
-            // throw new NotImplementedException();
-            // to do initialization
-        }
-
-        public string MemberName
-        {
-            get { throw new NotImplementedException(); }
-
-            set { throw new NotImplementedException(); }
-        }
-
-        public void Connect()
-        {
-            throw new NotImplementedException();
+            Connect(fileName);
         }
 
         public string GetData()
         {
             return _datafile.ReadLine();
-            // throw new NotImplementedException();
-            // to do initialization
-        }
 
-        public void SetPatientData()
-        {
-            throw new NotImplementedException();
         }
 
         public void Connect(string fileName)
@@ -49,8 +27,6 @@ namespace NewPatientMonitor
             _datafile = new StreamReader(fileName);
 
             _datafile.ReadLine();
-            // throw new NotImplementedException();
-            // to do initialization
         }
     }
 }

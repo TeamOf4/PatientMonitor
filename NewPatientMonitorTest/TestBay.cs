@@ -19,11 +19,11 @@ namespace NewPatientMonitorTest
         [TestMethod()]
         public void TestRemoveBedsideMonitor()
         {
-            IBay testBay = new Bay();
-            testBay.AddBedSideMonitor();
+            IBay testBay = new Bay(2);
             testBay.RemoveBedsideMonitor(0);
 
-            Assert.AreEqual(DefaultSettings.NumberOfBeds - 1, testBay.Beds.Count);
+            Assert.AreEqual(1, testBay.Beds.Count);
+            
         }
     }
 }

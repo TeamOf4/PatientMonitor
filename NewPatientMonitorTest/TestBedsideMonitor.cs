@@ -63,7 +63,7 @@ namespace NewPatientMonitorTest
             moduleToRemove.Setup(c => c.UpperLimit).Returns(20f);
 
             //act
-            bedsidemonitor.AddModule(moduleToRemove.Object);
+            bedsidemonitor.ChangeModule(0,moduleToRemove.Object);
             bedsidemonitor.RemoveModule(0);
 
             //assert
@@ -104,7 +104,7 @@ namespace NewPatientMonitorTest
             IBedsideMonitor testBedsideMonitor = new BedsideMonitor();
             testBedsideMonitor.AddModule(testModule.Object);
 
-            Assert.AreEqual(testModule.Object, testBedsideMonitor.Bedsidemodules[0]);
+            CollectionAssert.Contains(testBedsideMonitor.Bedsidemodules,testModule.Object);
         }
     }
 }

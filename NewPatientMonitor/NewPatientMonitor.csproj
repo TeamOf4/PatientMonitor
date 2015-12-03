@@ -56,10 +56,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="AlarmTester.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -76,18 +72,14 @@
     <Compile Include="IPatientData.cs" />
     <Compile Include="IPatientDataReader.cs" />
     <Compile Include="IPatientFactory.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Module.cs" />
     <Compile Include="PatientAlarmer.cs" />
     <Compile Include="PatientClassesEnumeration.cs" />
     <Compile Include="PatientData.cs" />
-    <Compile Include="IPatientDataAccessor.cs" />
-    <Compile Include="PatientDataAccessor.cs" />
+    <Compile Include="IPatientDataWriter.cs" />
+    <Compile Include="PatientDataWriter.cs" />
     <Compile Include="PatientDataReader.cs" />
     <Compile Include="PatientFactory.cs" />
     <Compile Include="PatientMonitoringController.cs" />

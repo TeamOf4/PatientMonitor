@@ -1,11 +1,8 @@
 ﻿namespace NewPatientMonitor
 {
-    internal interface IPatientDataReader
+    public interface IPatientDataReader
     {
-        string MemberName { get; set; }
-
-        void Connect();
+        void Connect(string fileName);
         string GetData();
-        void SetPatientData();
     }
 }

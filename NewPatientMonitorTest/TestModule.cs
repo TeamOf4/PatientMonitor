@@ -15,13 +15,9 @@ namespace NewPatientMonitorTest
         {
             Module testModule = new Module();
 
-            Assert.AreEqual(testModule.Name, DefaultSettings.NewModuleName);
-            Assert.AreEqual(testModule.LowerLimit, DefaultSettings.LowerDefaultValue);
-            Assert.AreEqual(testModule.UpperLimit, DefaultSettings.UpperDefaultValue);
+            bool test = testModule.Name == DefaultSettings.DefaultNewModule.Name && testModule.LowerLimit == DefaultSettings.DefaultNewModule.LowerLimit || testModule.UpperLimit == DefaultSettings.DefaultNewModule.UpperLimit;
 
-            // This is a test comment.
-
-            // Hello Nick
+            Assert.IsTrue(test);
         }
 
         [TestMethod]

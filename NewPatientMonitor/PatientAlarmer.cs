@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Media;
 
@@ -31,37 +32,26 @@ namespace NewPatientMonitor
         public event EventHandler Module3Alarm;
         public event EventHandler Module4Alarm;
 
-        public void ReadingTest(IPatientData reading, int bedNumber)
+        private IBedsideMonitor BedsideMonitorToTest { get; set; }
+
+        public void GetBedsideMonitor(IBedsideMonitor bedsideMonitorToTest)
+        {
+            BedsideMonitorToTest = bedsideMonitorToTest;
+        }
+
+        public bool ReadingTest(IPatientData reading, int bedNumber)
         {
             var tempBed = new Bay();
 
-            try
+            for (var i = 0; i < 4; i++)
             {
-                for (var i = 0; i < 4; i++)
-                {
-                    AlarmTesters.Add(new AlarmTester(tempBed.Beds[bedNumber].Bedsidemodules[i]));
-                    if (AlarmTesters[i].ValueOutsideLimits(reading.Values[i]))
-                    {
-                        // SoundAlarm();
-                        throw new NotImplementedException();
-                    }
-                }
+                AlarmTesters.Add(new AlarmTester(tempBed.Beds[bedNumber].Bedsidemodules[i]));
+
+                if (!AlarmTesters[i].ValueOutsideLimits(reading.Values[i]))
+                    return true;
             }
-            catch (ArgumentOutOfRangeException)
-            {
-            }
-        }
 
-
-        private void GenerateAlarm()
-        {
-            var player = new SoundPlayer(@"D:\PatientMonitor\NewPatientMonitor\bin\Debug\Resources\Mutable.wav");
-        }
-
-        public void SoundAlarm(SoundPlayer alarmSound)
-        {
-            GenerateAlarm();
-            alarmSound.Play();
+            return false;
         }
     }
 }

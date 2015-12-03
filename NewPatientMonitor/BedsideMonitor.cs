@@ -19,15 +19,22 @@ namespace NewPatientMonitor
 
             for (int i = 0; i < DefaultSettings.NumberOfModulesInAMonitor; i++)
             {
-                AddModule(new Module(DefaultSettings.BreathingRateName, DefaultSettings.LowerBreathingRate,
-                    DefaultSettings.UpperBreathingRate));
+                AddModule(new Module(DefaultSettings.DefaultModules[i]));
 
             }
         }
 
         public void AddModule(IModule moduleToBeAdded)
         {
-            Bedsidemodules.Add(moduleToBeAdded);
+            if (Bedsidemodules.Count < DefaultSettings.NumberOfModulesInAMonitor)
+            {
+                Bedsidemodules.Add(moduleToBeAdded);
+            }
+
+            else
+            {
+                ChangeModule(DefaultSettings.NumberOfModulesInAMonitor - 1, moduleToBeAdded);
+            }
         }
 
 

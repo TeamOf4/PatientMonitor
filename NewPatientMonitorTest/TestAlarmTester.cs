@@ -18,50 +18,69 @@ namespace NewPatientMonitorTest
         5) Test if the value setup in not less (minus values)
             */
 
-        // ARRANGE
-        AlarmTester _alarmTesterCreated;
-
-        // ACT
-        [TestInitialize]
-        public void Setup()
-        {
-            var moduleToAdd = new Mock<IModule>(MockBehavior.Strict);
-
-            moduleToAdd.Setup(a => a.LowerLimit).Returns(12f);
-            moduleToAdd.Setup(b => b.Name).Returns("Test");
-            moduleToAdd.Setup(c => c.UpperLimit).Returns(54f);
-
-            _alarmTesterCreated = new AlarmTester(moduleToAdd.Object);
-        }
         // ASSERT
        
         [TestMethod]
-        public void IsAlarmTestGoodCreation()
+        public void IsAlarmNameSetToModuleName()
         {
             /* This test method test whether the created alarm is the same as the one setup for the test initialize above.
              If the elements below this comment is the same as the one created the test will pass, else the test will fail. (NW)*/
             var testModule = new Mock<IModule>(MockBehavior.Strict);
 
-            testModule.Setup(a => a.LowerLimit).Returns(10f);
+            testModule.Setup(a => a.LowerLimit).Returns(12f);
             testModule.Setup(b => b.Name).Returns("Test");
-            testModule.Setup(c => c.UpperLimit).Returns(20f);
-            _alarmTesterCreated = new AlarmTester(testModule.Object);
+            testModule.Setup(c => c.UpperLimit).Returns(54f);
 
-            Assert.AreEqual(testModule.Object.Name, _alarmTesterCreated.NameOfAlarm);
-            Assert.AreEqual(testModule.Object.LowerLimit, _alarmTesterCreated.LowerLimit);
-            Assert.AreEqual(testModule.Object.UpperLimit, _alarmTesterCreated.UpperLimit);
+            IAlarmTester alarmTesterCreated = new AlarmTester(testModule.Object);
+
+            Assert.AreEqual(testModule.Object.Name, alarmTesterCreated.NameOfAlarm);
         }
 
         [TestMethod]
-        public void IsAlarmWithinLimits()
+        public void IsAlarmUpperLimitSetToModuleUpperLimit()
+        {
+            /* This test method test whether the created alarm is the same as the one setup for the test initialize above.
+             If the elements below this comment is the same as the one created the test will pass, else the test will fail. (NW)*/
+            var testModule = new Mock<IModule>(MockBehavior.Strict);
+
+            testModule.Setup(a => a.LowerLimit).Returns(12f);
+            testModule.Setup(b => b.Name).Returns("Test");
+            testModule.Setup(c => c.UpperLimit).Returns(54f);
+
+            IAlarmTester alarmTesterCreated= new AlarmTester(testModule.Object);
+
+            Assert.AreEqual(testModule.Object.UpperLimit, alarmTesterCreated.UpperLimit);
+        }
+
+        [TestMethod]
+        public void IsAlarmLowerLimitSetToModuleLowerLimit()
+        {
+            /* This test method test whether the created alarm is the same as the one setup for the test initialize above.
+             If the elements below this comment is the same as the one created the test will pass, else the test will fail. (NW)*/
+            var testModule = new Mock<IModule>(MockBehavior.Strict);
+
+            testModule.Setup(a => a.LowerLimit).Returns(12f);
+            testModule.Setup(b => b.Name).Returns("Test");
+            testModule.Setup(c => c.UpperLimit).Returns(54f);
+
+            IAlarmTester alarmTesterCreated = new AlarmTester(testModule.Object);
+
+            Assert.AreEqual(testModule.Object.LowerLimit, alarmTesterCreated.LowerLimit);
+        }
+
+        [TestMethod]
+        public void AlarmIsWithinLimits()
         {
             /* This test method will test whether the alarm values are in between the values 12f and 54f. 
              If the values fall in between 12 and 54 the test should pass. (NW) */
+            var testModule = new Mock<IModule>(MockBehavior.Strict);
 
-            Assert.IsFalse(_alarmTesterCreated.ValueOutsideLimits (13f));
-            Assert.IsFalse(_alarmTesterCreated.ValueOutsideLimits (53f));
-            Assert.IsFalse(_alarmTesterCreated.ValueOutsideLimits(41f));
-        
+            testModule.Setup(a => a.LowerLimit).Returns(12f);
+            testModule.Setup(b => b.Name).Returns("Test");
+            testModule.Setup(c => c.UpperLimit).Returns(54f);
+
+            IAlarmTester alarmTesterCreated = new AlarmTester(testModule.Object);
+            Assert.IsFalse(alarmTesterCreated.ValueOutsideLimits (13f));        
         }
 
         [TestMethod]
@@ -69,26 +88,44 @@ namespace NewPatientMonitorTest
         {
             /* This test method will test whether the values are outside the setup values 12f and 54f.
                If they are outside the test should pass. If in between should fail. (NW) */
+            var testModule = new Mock<IModule>(MockBehavior.Strict);
 
-            Assert.IsTrue(_alarmTesterCreated.ValueOutsideLimits(11f));
-            Assert.IsTrue(_alarmTesterCreated.ValueOutsideLimits(9f));
-            Assert.IsTrue(_alarmTesterCreated.ValueOutsideLimits(65f));
+            testModule.Setup(a => a.LowerLimit).Returns(12f);
+            testModule.Setup(b => b.Name).Returns("Test");
+            testModule.Setup(c => c.UpperLimit).Returns(54f);
+
+            IAlarmTester alarmTesterCreated = new AlarmTester(testModule.Object);
+            Assert.IsTrue(alarmTesterCreated.ValueOutsideLimits(11f));
         }
 
         [TestMethod]
         public void  AlarmDetectsNotZero() 
         {
             // This test should pass since the values setup is above 0. (NW)
-            
+            var testModule = new Mock<IModule>(MockBehavior.Strict);
 
-            Assert.IsTrue(_alarmTesterCreated.ValueOutsideLimits(0f));
+            testModule.Setup(a => a.LowerLimit).Returns(12f);
+            testModule.Setup(b => b.Name).Returns("Test");
+            testModule.Setup(c => c.UpperLimit).Returns(54f);
+
+            IAlarmTester alarmTesterCreated = new AlarmTester(testModule.Object);
+
+            Assert.IsTrue(alarmTesterCreated.ValueOutsideLimits(0f));
         }
         [TestMethod]
         public void AlarmDoesNotDetectMinusValues()
         {
 
             // This test should pass if the values detected in the setup is not equal to -2f (NW)
-            Assert.IsTrue(_alarmTesterCreated.ValueOutsideLimits(-2f));
+            var testModule = new Mock<IModule>(MockBehavior.Strict);
+
+            testModule.Setup(a => a.LowerLimit).Returns(12f);
+            testModule.Setup(b => b.Name).Returns("Test");
+            testModule.Setup(c => c.UpperLimit).Returns(54f);
+
+            IAlarmTester alarmTesterCreated = new AlarmTester(testModule.Object);
+
+            Assert.IsTrue(alarmTesterCreated.ValueOutsideLimits(-2f));
         }
 
         [TestMethod]

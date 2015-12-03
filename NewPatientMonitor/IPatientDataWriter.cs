@@ -1,6 +1,6 @@
 ﻿namespace NewPatientMonitor
 {
-    public interface IPatientDataAccessor
+    public interface IPatientDataWriter
     {
         IPatientAlarmer AlarmToBeStored { get; set; }
         int BedNumber { get; set; }

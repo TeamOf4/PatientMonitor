@@ -10,16 +10,23 @@ namespace NewPatientMonitor
     {
         public Module()
         {
-            Name = DefaultSettings.NewModuleName;
-            LowerLimit = DefaultSettings.LowerDefaultValue;
-            UpperLimit = DefaultSettings.UpperDefaultValue;
+            Name = DefaultSettings.DefaultNewModule.Name;
+            LowerLimit = DefaultSettings.DefaultNewModule.LowerLimit;
+            UpperLimit = DefaultSettings.DefaultNewModule.UpperLimit;
         }
 
-        public Module(string name)
+        public Module(IModule module)
         {
-            Name = name;
-            LowerLimit = DefaultSettings.LowerDefaultValue;
-            UpperLimit = DefaultSettings.UpperDefaultValue;
+            Name = module.Name;
+            LowerLimit = module.LowerLimit;
+            UpperLimit = module.UpperLimit;
+        }
+
+        public Module(string moduleName)
+        {
+            Name = moduleName;
+            LowerLimit = DefaultSettings.DefaultNewModule.LowerLimit;
+            UpperLimit = DefaultSettings.DefaultNewModule.UpperLimit;
         }
 
         public Module(string name, float lowerLimit, float upperLimit)

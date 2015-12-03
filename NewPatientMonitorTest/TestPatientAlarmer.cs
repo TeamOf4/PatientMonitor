@@ -14,7 +14,7 @@ namespace NewPatientMonitorTest
         PatientAlarmer _patientAlarmer;
 
         [TestInitialize]
-        public void Setup ()
+        public void Setup()
         {
             _patientAlarmer = new PatientAlarmer();
         }
@@ -56,13 +56,13 @@ namespace NewPatientMonitorTest
             var pulseRateAlarmWasCalled = false;
             var systolicAlarmWasCalled = false;
             var temperatureRateAlarmWasCalled = false;
-          
+
             _patientAlarmer.Module1Alarm += (sender, e) => breathingRateAlarmWasCalled = true;
             _patientAlarmer.Module2Alarm += (sender, e) => diastolicRateAlarmWasCalled = true;
             _patientAlarmer.Module3Alarm += (sender, e) => pulseRateAlarmWasCalled = true;
             _patientAlarmer.Module4Alarm += (sender, e) => systolicAlarmWasCalled = true;
             //patientAlarmer.TemperaturerateAlarm += (sender, e) => temperatureRateAlarmWasCalled = true;
-            _patientAlarmer.ReadingTest(patientData.Object, 0); 
+            _patientAlarmer.ReadingTest(patientData.Object, 0);
 
             Assert.IsFalse(breathingRateAlarmWasCalled);
             Assert.IsFalse(diastolicRateAlarmWasCalled);
@@ -83,8 +83,15 @@ namespace NewPatientMonitorTest
 
             var breathingRateAlarmWasCalled = false;
             _patientAlarmer.Module1Alarm += (sender, e) => breathingRateAlarmWasCalled = true;
-            _patientAlarmer.ReadingTest(patientData.Object,0);
+            _patientAlarmer.ReadingTest(patientData.Object, 0);
             Assert.IsTrue(breathingRateAlarmWasCalled);
+        }
+
+        [TestMethod()]
+        public void ReturnsFalseIfModuleIsOutsideLimits()
+        {
+
+            Assert.Fail();
         }
     }
 }
