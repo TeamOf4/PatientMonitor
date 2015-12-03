@@ -1,6 +1,6 @@
 ﻿namespace NewPatientMonitor
 {
-    interface IPatientDataReader
+    internal interface IPatientDataReader
     {
         string MemberName { get; set; }
 

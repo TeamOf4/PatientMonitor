@@ -2,11 +2,12 @@
 
 namespace NewPatientMonitor
 {
-    interface IBedsideMonitor
+    public interface IBedsideMonitor
     {
         List<IModule> Bedsidemodules { get; set; }
 
-        void AddModule(IModule module);
-        void RemoveModule(int moduleNumber);
+        void AddModule(IModule moduleToBeAdded);
+        void ChangeModule(int indexOfModule, IModule moduleToBeAdded);
+        void RemoveModule(int indexOfModuleToBeRemoved);
     }
 }

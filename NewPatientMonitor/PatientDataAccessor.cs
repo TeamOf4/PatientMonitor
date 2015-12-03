@@ -1,23 +1,20 @@
+﻿using System;
+
 namespace NewPatientMonitor
 {
-    class PatientDataAccessor : IPatientDataAccessor
+    internal class PatientDataAccessor : IPatientDataAccessor
     {
         public IPatientAlarmer AlarmToBeStored { get; set; }
         public int BedNumber { get; set; }
 
-        PatientDataAccessor()
-        {
-            
-        }
-
         public void WriteData(IPatientAlarmer alarmToBeStored)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void ReadData(int bedNumber)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

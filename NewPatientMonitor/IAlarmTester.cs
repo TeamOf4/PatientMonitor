@@ -6,6 +6,5 @@
         float UpperLimit { get; set; }
 
         bool ValueOutsideLimits(float value);
-        
     }
 }

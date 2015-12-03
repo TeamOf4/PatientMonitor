@@ -13,7 +13,7 @@ namespace NewPatientMonitorTest
         [TestMethod]
         public void TestAddingModuleToBedsideMonitor()
         {
-             //arrange
+            //arrange
             BedsideMonitor bedsidemonitor = new BedsideMonitor();
             var moduleToAdd = new Mock<IModule>(MockBehavior.Strict);
 
@@ -21,16 +21,16 @@ namespace NewPatientMonitorTest
             moduleToAdd.Setup(b => b.Name).Returns("Test");
             moduleToAdd.Setup(c => c.UpperLimit).Returns(20f);
 
-             //act
+            //act
             bedsidemonitor.AddModule(moduleToAdd.Object);
 
             //assert
 
-           Assert.IsTrue(bedsidemonitor.Bedsidemodules.Contains(moduleToAdd.Object));
+            Assert.IsTrue(bedsidemonitor.Bedsidemodules.Contains(moduleToAdd.Object));
         }
 
         #region Additional test attributes
-       // //
+        // //
         // You can use the following additional attributes as you write your tests:
         //
         // Use ClassInitialize to run code before running the first test in the class
@@ -70,6 +70,41 @@ namespace NewPatientMonitorTest
 
             Assert.IsFalse(bedsidemonitor.Bedsidemodules.Contains(moduleToRemove.Object));
 
+        }
+
+        [TestMethod()]
+        public void TestChangeModule()
+        {
+            var testModuleOld = new Mock<IModule>();
+            testModuleOld.Setup(a => a.Name).Returns("TestOld");
+            testModuleOld.Setup(b => b.LowerLimit).Returns(10f);
+            testModuleOld.Setup(c => c.UpperLimit).Returns(15f);
+
+            var testModuleNew = new Mock<IModule>();
+            testModuleNew.Setup(a => a.Name).Returns("TestOld");
+            testModuleNew.Setup(b => b.LowerLimit).Returns(10f);
+            testModuleNew.Setup(c => c.UpperLimit).Returns(15f);
+
+            IBedsideMonitor testBedsideMonitor = new BedsideMonitor();
+            testBedsideMonitor.AddModule(testModuleOld.Object);
+            testBedsideMonitor.AddModule(testModuleOld.Object);
+            testBedsideMonitor.ChangeModule(1, testModuleNew.Object);
+
+            Assert.AreEqual(testModuleNew.Object,testBedsideMonitor.Bedsidemodules[1]);
+        }
+
+        [TestMethod()]
+        public void TestAddModule()
+        {
+            var testModule = new Mock<IModule>();
+            testModule.Setup(a => a.Name).Returns("Test");
+            testModule.Setup(b => b.LowerLimit).Returns(10f);
+            testModule.Setup(c => c.UpperLimit).Returns(15f);
+
+            IBedsideMonitor testBedsideMonitor = new BedsideMonitor();
+            testBedsideMonitor.AddModule(testModule.Object);
+
+            Assert.AreEqual(testModule.Object, testBedsideMonitor.Bedsidemodules[0]);
         }
     }
 }

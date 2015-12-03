@@ -1,7 +1,7 @@
 ﻿namespace NewPatientMonitor
 {
-    interface IPatientFactory
+    internal interface IPatientFactory
     {
-         object CreateAndReturnObj(PatientClassesEnumeration objectToGet);
+        object CreateAndReturnObj(PatientClassesEnumeration objectToGet);
     }
 }

@@ -65,10 +65,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Bed.cs" />
+    <Compile Include="Bay.cs" />
     <Compile Include="BedsideMonitor.cs" />
     <Compile Include="DefaultSettings.cs" />
     <Compile Include="IAlarmTester.cs" />
+    <Compile Include="IBay.cs" />
     <Compile Include="IBedsideMonitor.cs" />
     <Compile Include="IModule.cs" />
     <Compile Include="IPatientAlarmer.cs" />

@@ -1,5 +1,4 @@
-﻿
-namespace NewPatientMonitor
+﻿namespace NewPatientMonitor
 {
     // This is the default settings or values for the Patient Monitor Program.
     public struct DefaultSettings
@@ -23,5 +22,8 @@ namespace NewPatientMonitor
         public const float LowerTemperatureRate = 35.5f;
         public const float UpperDefaultValue = 30.0f;
         public const float LowerDefaultValue = 10.0f;
+
+        public const int NumberOfBeds = 8;
+        public const int NumberOfModulesInAMonitor = 4;
     }
 }

@@ -57,6 +57,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="TestBay.cs" />
     <Compile Include="TestModule.cs" />
     <Compile Include="TestBedsideMonitor.cs" />
     <Compile Include="TestPatientAlarmer.cs" />

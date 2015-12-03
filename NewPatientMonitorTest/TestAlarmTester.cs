@@ -91,7 +91,11 @@ namespace NewPatientMonitorTest
             Assert.IsTrue(_alarmTesterCreated.ValueOutsideLimits(-2f));
         }
 
-
+        [TestMethod]
+        public void AlarmTesterSetting()
+        {
+            
+        }
 
 
     }
