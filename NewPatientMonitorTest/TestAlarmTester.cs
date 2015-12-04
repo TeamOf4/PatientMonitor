@@ -148,9 +148,19 @@ namespace NewPatientMonitorTest
         }
 
         [TestMethod]
-        public void AlarmTesterSetting()
+        public void GetAlarmTesterName()
         {
-            
+            var testModule = new Mock<IModule>(MockBehavior.Strict);
+
+            testModule.Setup(a => a.LowerLimit).Returns(12f);
+            testModule.Setup(b => b.Name).Returns("Test");
+            testModule.Setup(c => c.UpperLimit).Returns(54f);
+
+            IAlarmTester testAlarmTester = new AlarmTester(testModule.Object);
+
+            string alarmName = testAlarmTester.NameOfAlarm;
+
+            Assert.AreEqual(testModule.Object.Name, testAlarmTester.NameOfAlarm);
         }
 
 
