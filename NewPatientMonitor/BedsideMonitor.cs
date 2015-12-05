@@ -9,9 +9,9 @@ namespace NewPatientMonitor
 {
     public class BedsideMonitor : IBedsideMonitor
     {
-        public Module ModuleToBeAdded = new Module();
+        private Module ModuleToBeAdded = new Module();
 
-        public List<IModule> Bedsidemodules { get; set; } = new List<IModule>(4);
+        public List<IModule> BedsideModules { get; set; } = new List<IModule>(DefaultSettings.NumberOfModulesInAMonitor);
 
         public BedsideMonitor()
         {
@@ -26,9 +26,9 @@ namespace NewPatientMonitor
 
         public void AddModule(IModule moduleToBeAdded)
         {
-            if (Bedsidemodules.Count < DefaultSettings.NumberOfModulesInAMonitor)
+            if (BedsideModules.Count < DefaultSettings.NumberOfModulesInAMonitor)
             {
-                Bedsidemodules.Add(moduleToBeAdded);
+                BedsideModules.Add(moduleToBeAdded);
             }
 
             else
@@ -40,13 +40,18 @@ namespace NewPatientMonitor
 
         public void RemoveModule(int indexOfModuleToBeRemoved)
         {
-            Bedsidemodules.RemoveAt(indexOfModuleToBeRemoved);
+            BedsideModules.RemoveAt(indexOfModuleToBeRemoved);
         }
 
         public void ChangeModule(int indexOfModule, IModule moduleToBeAdded)
         {
             RemoveModule(indexOfModule);
-            Bedsidemodules.Insert(indexOfModule, moduleToBeAdded);
+            BedsideModules.Insert(indexOfModule, moduleToBeAdded);
+        }
+
+        public List<IModule> GetListOfModules()
+        {
+            return BedsideModules;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace NewPatientMonitorTest
             IBay testBay = new Bay();
             testBay.AddBedSideMonitor();
 
-            Assert.IsNotNull(testBay.Beds[0]);
+            Assert.IsNotNull(testBay.BedsideMonitors[0]);
         }
 
         [TestMethod()]
@@ -22,7 +22,7 @@ namespace NewPatientMonitorTest
             IBay testBay = new Bay(2);
             testBay.RemoveBedsideMonitor(0);
 
-            Assert.AreEqual(1, testBay.Beds.Count);
+            Assert.AreEqual(1, testBay.BedsideMonitors.Count);
             
         }
     }

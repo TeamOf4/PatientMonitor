@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NewPatientMonitor;
 using Moq; // Installed the Moq testing from nuget packages
 
@@ -11,10 +12,27 @@ namespace NewPatientMonitorTest
     public class TestBedsideMonitor
     {
         [TestMethod]
+        public void TestGettingListOfModules()
+        {
+            BedsideMonitor testBedsideMonitor = new BedsideMonitor();
+
+            var moduleToAdd = new Mock<IModule>(MockBehavior.Strict);
+
+            moduleToAdd.Setup(a => a.LowerLimit).Returns(10f);
+            moduleToAdd.Setup(b => b.Name).Returns("Test");
+            moduleToAdd.Setup(c => c.UpperLimit).Returns(20f);
+
+            testBedsideMonitor.AddModule(moduleToAdd.Object);
+
+            List <IModule> testModuleList = testBedsideMonitor.GetListOfModules();
+
+            CollectionAssert.Contains(testModuleList, moduleToAdd.Object);
+        }
+        [TestMethod]
         public void TestAddingModuleToBedsideMonitor()
         {
             //arrange
-            BedsideMonitor bedsidemonitor = new BedsideMonitor();
+            BedsideMonitor testBedsideMonitor = new BedsideMonitor();
             var moduleToAdd = new Mock<IModule>(MockBehavior.Strict);
 
             moduleToAdd.Setup(a => a.LowerLimit).Returns(10f);
@@ -22,14 +40,16 @@ namespace NewPatientMonitorTest
             moduleToAdd.Setup(c => c.UpperLimit).Returns(20f);
 
             //act
-            bedsidemonitor.AddModule(moduleToAdd.Object);
+            testBedsideMonitor.AddModule(moduleToAdd.Object);
+            List<IModule> testModuleList = testBedsideMonitor.GetListOfModules();
 
             //assert
 
-            Assert.IsTrue(bedsidemonitor.Bedsidemodules.Contains(moduleToAdd.Object));
+            Assert.IsTrue(testModuleList.Contains(moduleToAdd.Object));
         }
 
         #region Additional test attributes
+
         // //
         // You can use the following additional attributes as you write your tests:
         //
@@ -49,13 +69,14 @@ namespace NewPatientMonitorTest
         // [TestCleanup()]
         // public void MyTestCleanup() { }
         //
+
         #endregion
 
         [TestMethod]
         public void RemovingModule()
         {
             //arrange
-            BedsideMonitor bedsidemonitor = new BedsideMonitor();
+            BedsideMonitor testBedsideMonitor = new BedsideMonitor();
             var moduleToRemove = new Mock<IModule>(MockBehavior.Strict);
 
             moduleToRemove.Setup(a => a.LowerLimit).Returns(10f);
@@ -63,12 +84,13 @@ namespace NewPatientMonitorTest
             moduleToRemove.Setup(c => c.UpperLimit).Returns(20f);
 
             //act
-            bedsidemonitor.ChangeModule(0,moduleToRemove.Object);
-            bedsidemonitor.RemoveModule(0);
+            testBedsideMonitor.ChangeModule(0, moduleToRemove.Object);
+            testBedsideMonitor.RemoveModule(0);
+            List<IModule> testModuleList = testBedsideMonitor.GetListOfModules();
 
             //assert
 
-            Assert.IsFalse(bedsidemonitor.Bedsidemodules.Contains(moduleToRemove.Object));
+            Assert.IsFalse(testModuleList.Contains(moduleToRemove.Object));
 
         }
 
@@ -89,8 +111,9 @@ namespace NewPatientMonitorTest
             testBedsideMonitor.AddModule(testModuleOld.Object);
             testBedsideMonitor.AddModule(testModuleOld.Object);
             testBedsideMonitor.ChangeModule(1, testModuleNew.Object);
+            List<IModule> testModuleList = testBedsideMonitor.GetListOfModules();
 
-            Assert.AreEqual(testModuleNew.Object,testBedsideMonitor.Bedsidemodules[1]);
+            Assert.AreEqual(testModuleNew.Object, testModuleList[1]);
         }
 
         [TestMethod()]
@@ -103,8 +126,9 @@ namespace NewPatientMonitorTest
 
             IBedsideMonitor testBedsideMonitor = new BedsideMonitor();
             testBedsideMonitor.AddModule(testModule.Object);
+            List<IModule> testModuleList = testBedsideMonitor.GetListOfModules();
 
-            CollectionAssert.Contains(testBedsideMonitor.Bedsidemodules,testModule.Object);
+            CollectionAssert.Contains(testModuleList, testModule.Object);
         }
     }
 }

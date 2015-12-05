@@ -17,7 +17,7 @@ namespace NewPatientMonitor
         // Module being tested
         //public IModule TestModule { get; set; }
 
-        public string NameOfAlarm { get; private set; }
+        public string NameOfAlarm { get;  set; }
 
         public float LowerLimit { get; set; }
 

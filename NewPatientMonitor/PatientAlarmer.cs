@@ -1,7 +1,5 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
-using System.Media;
 
 /*
 HELP
@@ -11,6 +9,11 @@ namespace NewPatientMonitor
 {
     public class PatientAlarmer : IPatientAlarmer
     {
+        public PatientAlarmer(List<IAlarmTester> alarmTesters)
+        {
+            this._AlarmTesters = alarmTesters;
+        }
+
         /*
         The code below tells the compiler where to get the values from. In this case it obtains
         the values within the default settings. 
@@ -20,42 +23,52 @@ namespace NewPatientMonitor
         Module Name , Lower Breathing Rate (Default Settings), Upper Breathing Rate (Default Settings)
         */
 
-        public List<IAlarmTester> AlarmTesters { get; set; } = new List<IAlarmTester>(4);
 
-        public void ReadingTest()
+        //public event EventHandler Module1Alarm;
+        //public event EventHandler Module2Alarm;
+        //public event EventHandler Module3Alarm;
+        //public event EventHandler Module4Alarm;
+
+        public List<EventHandler> ModuleAlarms { get; set; } =
+            new List<EventHandler>();
+
+        private List<IAlarmTester> _AlarmTesters { get; set; } = new List<IAlarmTester>();
+
+        public List<IAlarmTester> AlarmTesters => _AlarmTesters;
+
+
+        //private IBedsideMonitor BedsideMonitorToTest
+        //{
+        //    get;
+        //    set;
+        //}
+
+        public PatientAlarmer()
         {
-            throw new NotImplementedException();
+            
         }
 
-        public event EventHandler Module1Alarm;
-        public event EventHandler Module2Alarm;
-        public event EventHandler Module3Alarm;
-        public event EventHandler Module4Alarm;
+        //public void GetBedsideMonitor(IBedsideMonitor bedsideMonitorToTest)
+        //{
+        //    BedsideMonitorToTest = bedsideMonitorToTest;
+        //}
 
-        private IBedsideMonitor BedsideMonitorToTest
+
+        public void ReadingTest(IPatientData reading, IBedsideMonitor monitor)
         {
-            get;
-            set;
+            SetLimits(monitor);
+
+            for (int i = 0; i < AlarmTesters.Count; i++)
+                if (AlarmTesters[i].ValueOutsideLimits(reading.Values[i]))
+                    if (ModuleAlarms[i] != null) ModuleAlarms[i](this, null);                   
         }
 
-        public void GetBedsideMonitor(IBedsideMonitor bedsideMonitorToTest)
+        private void SetLimits(IBedsideMonitor monitor)
         {
-            BedsideMonitorToTest = bedsideMonitorToTest;
-        }
-
-        public bool ReadingTest(IPatientData reading, int bedNumber)
-        {
-            var tempBed = new Bay();
-
-            for (var i = 0; i < 4; i++)
+            foreach (IModule t in monitor.BedsideModules)
             {
-                AlarmTesters.Add(new AlarmTester(tempBed.Beds[bedNumber].Bedsidemodules[i]));
-
-                if (!AlarmTesters[i].ValueOutsideLimits(reading.Values[i]))
-                    return true;
+                _AlarmTesters.Add(new AlarmTester(t));
             }
-
-            return false;
         }
     }
 }

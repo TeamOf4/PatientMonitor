@@ -3,7 +3,7 @@
     public interface IAlarmTester
     {
         float LowerLimit { get; set; }
-        string NameOfAlarm { get; }
+        string NameOfAlarm { get; set; }
         //IModule TestModule { get; set; }
         float UpperLimit { get; set; }
 
