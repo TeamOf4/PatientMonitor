@@ -71,9 +71,12 @@
     <Compile Include="IPatientAlarmer.cs" />
     <Compile Include="IPatientData.cs" />
     <Compile Include="IPatientDataReader.cs" />
-    <Compile Include="IPatientFactory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPatientFactory.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Module.cs" />
     <Compile Include="PatientAlarmer.cs" />
     <Compile Include="PatientClassesEnumeration.cs" />
@@ -100,6 +103,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -112,6 +116,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Mutable.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

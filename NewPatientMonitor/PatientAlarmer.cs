@@ -5,16 +5,18 @@ namespace NewPatientMonitor
 {
     public class PatientAlarmer : IPatientAlarmer
     {
-        public PatientAlarmer(List<IAlarmTester> alarmTesters)
-        {
-            _AlarmTesters = alarmTesters;
-        }
+        //public PatientAlarmer(List<IAlarmTester> alarmTesters)
+        //{
+        //    _AlarmTesters = alarmTesters;
+        //}
 
         public event EventHandler ModuleAlarm;
 
         private List<IAlarmTester> _AlarmTesters { get; } = new List<IAlarmTester>();
 
         public List<IAlarmTester> AlarmTesters => _AlarmTesters;
+
+        protected virtual void OnModuleAlarm() => ModuleAlarm?.Invoke(this, EventArgs.Empty);
 
 
         public PatientAlarmer()
@@ -39,9 +41,5 @@ namespace NewPatientMonitor
             }
         }
 
-        protected virtual void OnModuleAlarm()
-        {
-            ModuleAlarm?.Invoke(this, EventArgs.Empty);
-        }
     }
 }

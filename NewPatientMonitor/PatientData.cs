@@ -26,7 +26,7 @@ namespace NewPatientMonitor
         {
             // creates an array of strings from patientData seperated by commas
             var dataItems = patientData.Split(',');
-            // Loops through the number of modules and adds them to the values list
+            // Loops through the number of Modules and adds them to the values list
             for (var i = 0; i < 4; i++)
             {
                 Values.Add(float.Parse(dataItems[i]));

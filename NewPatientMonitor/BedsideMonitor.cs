@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 /*
-Stores a list of modules installed in the bedside monitor. Can add and remove modules from
+Stores a list of Modules installed in the bedside monitor. Can add and remove Modules from
 the bedside monitor
 */
 

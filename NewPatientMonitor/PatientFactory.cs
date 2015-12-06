@@ -2,7 +2,7 @@
 
 namespace NewPatientMonitor
 {
-    internal class PatientFactory : IPatientFactory
+    public class PatientFactory : IPatientFactory
     {
         public object CreateAndReturnObj(PatientClassesEnumeration objectToGet)
         {
