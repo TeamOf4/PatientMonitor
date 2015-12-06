@@ -27,7 +27,7 @@ namespace NewPatientMonitor
             SetLimits(monitor);
 
             for (int i = 0; i < AlarmTesters.Count; i++)
-                if (AlarmTesters[i].ValueOutsideLimits(reading.Values[i]))
+                if (_AlarmTesters[i].ValueOutsideLimits(reading.Values[i]))
                     if (ModuleAlarm != null) ModuleAlarm(this, null);                   
         }
 
