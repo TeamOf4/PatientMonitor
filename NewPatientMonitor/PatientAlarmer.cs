@@ -11,26 +11,8 @@ namespace NewPatientMonitor
     {
         public PatientAlarmer(List<IAlarmTester> alarmTesters)
         {
-            this._AlarmTesters = alarmTesters;
+            _AlarmTesters = alarmTesters;
         }
-
-        /*
-        The code below tells the compiler where to get the values from. In this case it obtains
-        the values within the default settings. 
-        
-        I have specified in this sequence:
-
-        Module Name , Lower Breathing Rate (Default Settings), Upper Breathing Rate (Default Settings)
-        */
-
-
-        //public event EventHandler Module1Alarm;
-        //public event EventHandler Module2Alarm;
-        //public event EventHandler Module3Alarm;
-        //public event EventHandler Module4Alarm;
-
-        //public List<EventHandler> ModuleAlarms { get; set; } =
-        //    new List<EventHandler>();
 
         public event EventHandler ModuleAlarm;
 
@@ -39,22 +21,10 @@ namespace NewPatientMonitor
         public List<IAlarmTester> AlarmTesters => _AlarmTesters;
 
 
-        //private IBedsideMonitor BedsideMonitorToTest
-        //{
-        //    get;
-        //    set;
-        //}
-
         public PatientAlarmer()
         {
             
         }
-
-        //public void GetBedsideMonitor(IBedsideMonitor bedsideMonitorToTest)
-        //{
-        //    BedsideMonitorToTest = bedsideMonitorToTest;
-        //}
-
 
         public void ReadingTest(IPatientData reading, IBedsideMonitor monitor)
         {

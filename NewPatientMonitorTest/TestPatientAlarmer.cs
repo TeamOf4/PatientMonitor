@@ -97,7 +97,7 @@ namespace NewPatientMonitorTest
 
 
         [TestMethod()]
-        public void ReadingTest()
+        public void ReadingTestAlarmNotCalled()
         {
             var alarmCalled = false;
 
