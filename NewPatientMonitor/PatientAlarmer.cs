@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-/*
-HELP
-*/
-
 namespace NewPatientMonitor
 {
     public class PatientAlarmer : IPatientAlarmer
