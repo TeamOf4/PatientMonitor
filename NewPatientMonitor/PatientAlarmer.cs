@@ -7,7 +7,7 @@ HELP
 
 namespace NewPatientMonitor
 {
-    public class PatientAlarmer : IPatientAlarmer
+    public class PatientAlarmer
     {
         public PatientAlarmer(List<IAlarmTester> alarmTesters)
         {
@@ -29,10 +29,12 @@ namespace NewPatientMonitor
         //public event EventHandler Module3Alarm;
         //public event EventHandler Module4Alarm;
 
-        public List<EventHandler> ModuleAlarms { get; set; } =
-            new List<EventHandler>();
+        //public List<EventHandler> ModuleAlarms { get; set; } =
+        //    new List<EventHandler>();
 
-        private List<IAlarmTester> _AlarmTesters { get; set; } = new List<IAlarmTester>();
+        public event EventHandler ModuleAlarm;
+
+        private List<IAlarmTester> _AlarmTesters { get; } = new List<IAlarmTester>();
 
         public List<IAlarmTester> AlarmTesters => _AlarmTesters;
 
@@ -60,7 +62,7 @@ namespace NewPatientMonitor
 
             for (int i = 0; i < AlarmTesters.Count; i++)
                 if (AlarmTesters[i].ValueOutsideLimits(reading.Values[i]))
-                    if (ModuleAlarms[i] != null) ModuleAlarms[i](this, null);                   
+                    if (ModuleAlarm != null) ModuleAlarm(this, null);                   
         }
 
         private void SetLimits(IBedsideMonitor monitor)
@@ -69,6 +71,11 @@ namespace NewPatientMonitor
             {
                 _AlarmTesters.Add(new AlarmTester(t));
             }
+        }
+
+        protected virtual void OnModuleAlarm()
+        {
+            ModuleAlarm?.Invoke(this, EventArgs.Empty);
         }
     }
 }

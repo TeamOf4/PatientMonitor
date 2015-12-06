@@ -6,7 +6,8 @@ namespace NewPatientMonitor
     public interface IPatientAlarmer
     {
         List<IAlarmTester> AlarmTesters { get; }
-        List<EventHandler> ModuleAlarms { get; set; }
+
+        event EventHandler ModuleAlarm;
 
         void ReadingTest(IPatientData reading, IBedsideMonitor monitor);
     }
