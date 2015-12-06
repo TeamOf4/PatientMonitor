@@ -7,7 +7,7 @@ HELP
 
 namespace NewPatientMonitor
 {
-    public class PatientAlarmer
+    public class PatientAlarmer : IPatientAlarmer
     {
         public PatientAlarmer(List<IAlarmTester> alarmTesters)
         {
