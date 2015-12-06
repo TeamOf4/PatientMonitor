@@ -95,8 +95,9 @@ namespace NewPatientMonitorTest
         //    Assert.Fail();
         //}
 
+
         [TestMethod()]
-        public void ReadingTestTest()
+        public void ReadingTest()
         {
             var alarmCalled = false;
 
