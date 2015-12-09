@@ -20,6 +20,7 @@ namespace NewPatientMonitor
     public partial class MainWindow : Window
     {
         public List<Label> Modules;
+        public object patientSelector;
 
         public MainWindow()
         {
@@ -27,5 +28,10 @@ namespace NewPatientMonitor
         }
 
         public CheckBox AlarmMute { get; set; }
+
+        public void soundMutableAlarm()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

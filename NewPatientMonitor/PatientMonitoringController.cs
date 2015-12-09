@@ -52,13 +52,13 @@ namespace NewPatientMonitor
             throw new NotImplementedException();
         }
 
-        void NewPatientSelected(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            _tickTimer.Stop();
-            string fileName = @"..\..\..\" + _mainWindow.patientSelector.SelectedValue + ".csv";
-            _dataReader.Connect(fileName);
-            _tickTimer.Start();
-        }
+        //void NewPatientSelected(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        //{
+        //    _tickTimer.Stop();
+        //    string fileName = @"..\..\..\" + _mainWindow.patientSelector.SelectedValue + ".csv";
+        //    _dataReader.Connect(fileName);
+        //    _tickTimer.Start();
+        //}
 
         void soundMutableAlarm(object sender, EventArgs e)
         {
