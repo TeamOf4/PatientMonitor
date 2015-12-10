@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿// unit tests for the Bedside monitor class
+
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NewPatientMonitor;
 using Moq; // Installed the Moq testing from nuget packages
@@ -11,6 +13,7 @@ namespace NewPatientMonitorTest
     [TestClass]
     public class TestBedsideMonitor
     {
+        // Asserts that the testmodule list contains the added module J.S
         [TestMethod]
         public void TestGettingListOfModules()
         {
@@ -28,6 +31,8 @@ namespace NewPatientMonitorTest
 
             CollectionAssert.Contains(testModuleList, moduleToAdd.Object);
         }
+        // Asserts that the testmodule list contains the added module J.S
+
         [TestMethod]
         public void TestAddingModuleToBedsideMonitor()
         {
@@ -47,6 +52,7 @@ namespace NewPatientMonitorTest
 
             Assert.IsTrue(testModuleList.Contains(moduleToAdd.Object));
         }
+        // Asserts that the testmodule list does not contain the removed module J.S
 
         [TestMethod]
         public void RemovingModule()
@@ -70,6 +76,8 @@ namespace NewPatientMonitorTest
 
         }
 
+        // Asserts that the test module is the same as the changed module J.S
+
         [TestMethod()]
         public void TestChangeModule()
         {
@@ -91,6 +99,7 @@ namespace NewPatientMonitorTest
 
             Assert.AreEqual(testModuleNew.Object, testModuleList[1]);
         }
+        // Asserts that the testmodule list contains the added module
 
         [TestMethod()]
         public void TestAddModule()
