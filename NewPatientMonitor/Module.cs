@@ -2,6 +2,7 @@
  *  Each module has a name string and an upper and lower value
  *  These values can be set when a module is created or updated later
  *  If a module is created without these values default values from DefaultSettings will be used
+ *  J.S
  */
 
 namespace NewPatientMonitor
