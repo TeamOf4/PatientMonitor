@@ -16,7 +16,7 @@ namespace NewPatientMonitorTest
         }
 
         [TestMethod()]
-        public void TestWriter()
+        public void TestWriteData()
         {
             Mock<IPatientAlarmer> testAlarmer = new Mock<IPatientAlarmer>();
             testAlarmer.Setup(a => a.AlarmTesters).Returns(new List<IAlarmTester>());
@@ -35,9 +35,13 @@ namespace NewPatientMonitorTest
         }
 
         [TestMethod()]
-        public void TestWriteData()
+        public void TestAlarmSet()
         {
-            Assert.Fail();
+            Mock<IPatientAlarmer> testPatientAlarm = new Mock<IPatientAlarmer>();
+
+            PatientDataWriter testDataWriter = new PatientDataWriter();
+            testDataWriter.AlarmToBeStored = testPatientAlarm.Object;
+            Assert.AreEqual(testPatientAlarm.Object, testDataWriter.AlarmToBeStored);
         }
     }
 }
