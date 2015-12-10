@@ -5,7 +5,7 @@ using System.Windows.Threading;
 
 namespace NewPatientMonitor
 {
-    class PatientMonitoringController
+    public class PatientMonitoringController
     {
         readonly MainWindow _mainWindow = null;
         private readonly IPatientFactory _patientFactory = null;
@@ -34,7 +34,9 @@ namespace NewPatientMonitor
 
         void SetupUi()
         {
-            throw new NotImplementedException();
+            _mainWindow.patientSelector.SelectionChanged += new System.Windows.Controls.SelectionChangedEventHandler(NewPatientSelected);
+
+
         }
 
         void LimitsChanged(object sender, EventArgs e)
@@ -52,13 +54,13 @@ namespace NewPatientMonitor
             throw new NotImplementedException();
         }
 
-        //void NewPatientSelected(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        //{
-        //    _tickTimer.Stop();
-        //    string fileName = @"..\..\..\" + _mainWindow.patientSelector.SelectedValue + ".csv";
-        //    _dataReader.Connect(fileName);
-        //    _tickTimer.Start();
-        //}
+        void NewPatientSelected(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            _tickTimer.Stop();
+            string fileName = @"..\..\..\" + _mainWindow.patientSelector.SelectedValue + ".csv";
+            _dataReader.Connect(fileName);
+            _tickTimer.Start();
+        }
 
         void soundMutableAlarm(object sender, EventArgs e)
         {
