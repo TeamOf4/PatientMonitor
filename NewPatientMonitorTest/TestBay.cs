@@ -7,6 +7,7 @@ namespace NewPatientMonitorTest
     [TestClass()]
     public class TestBay
     {
+        // Checks that a new bedside monitor ha sbeen added to the empty bay J.S
         [TestMethod()]
         public void TestAddBedSideMonitor()
         {
@@ -16,6 +17,7 @@ namespace NewPatientMonitorTest
             Assert.IsNotNull(testBay.BedsideMonitors[0]);
         }
 
+        //  Checks that the selected bay is removed from the monitor J.S
         [TestMethod()]
         public void TestRemoveBedsideMonitor()
         {
@@ -26,6 +28,7 @@ namespace NewPatientMonitorTest
 
         }
 
+        // Tests that the created list of bays is the same as the returned list of bays J.S
         [TestMethod()]
         public void GetListOfBedsideMonitorsTest()
         {
