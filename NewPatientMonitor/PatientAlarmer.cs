@@ -5,10 +5,6 @@ namespace NewPatientMonitor
 {
     public sealed class PatientAlarmer : IPatientAlarmer
     {
-        //public PatientAlarmer(List<IAlarmTester> alarmTesters)
-        //{
-        //    _AlarmTesters = alarmTesters;
-        //}
 
         public event EventHandler ModuleAlarm;
 
