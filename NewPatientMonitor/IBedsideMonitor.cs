@@ -1,4 +1,11 @@
-﻿using System.Collections.Generic;
+﻿/*
+* Interface for bedside monitor
+* Contains a list of bedside modules
+* Contains functions to add and remove modules to/from the list, and to swap a module in the list
+* Contains functions to return the list of modules in this bedside monitor
+*/
+
+using System.Collections.Generic;
 
 namespace NewPatientMonitor
 {
