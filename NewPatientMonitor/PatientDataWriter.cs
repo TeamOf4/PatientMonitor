@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+* Writes data of alarm and bednumber that triggered alarm to file J.S
+*/
+
+using System;
 
 namespace NewPatientMonitor
 {
