@@ -4,7 +4,7 @@ using System.Windows.Threading;
 
 namespace NewPatientMonitor
 {
-    public class PatientMonitoringController
+    public class PatientMonitoringController : IPatientMonitoringController
     {
         private readonly Bay _bay = new Bay();
         private readonly MainWindow _mainWindow;

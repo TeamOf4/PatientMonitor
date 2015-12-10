@@ -71,6 +71,8 @@
     <Compile Include="IPatientAlarmer.cs" />
     <Compile Include="IPatientData.cs" />
     <Compile Include="IPatientDataReader.cs" />
+    <Compile Include="IPatientDataWriter.cs" />
+    <Compile Include="IPatientMonitoringController.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -84,7 +86,6 @@
     <Compile Include="PatientAlarmer.cs" />
     <Compile Include="PatientClassesEnumeration.cs" />
     <Compile Include="PatientData.cs" />
-    <Compile Include="IPatientDataWriter.cs" />
     <Compile Include="PatientDataWriter.cs" />
     <Compile Include="PatientDataReader.cs" />
     <Compile Include="PatientFactory.cs" />
