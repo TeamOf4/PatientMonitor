@@ -2,11 +2,12 @@
 using NewPatientMonitor;
 
 /*
- *  Unit tests for the module class
+ *  Unit tests for the module class J.S
 */ 
 
 namespace NewPatientMonitorTest
 {
+    // Asserts that the module has been created with default settings J.S
     [TestClass]
     public class TestModule
     {
@@ -20,6 +21,7 @@ namespace NewPatientMonitorTest
             Assert.IsTrue(test);
         }
 
+        // Asserts that the module has been created with the set name J.S
         [TestMethod]
         public void ModuleCreatedWithSetName()
         {
@@ -29,6 +31,7 @@ namespace NewPatientMonitorTest
             Assert.AreEqual(testModule.Name, testName);
         }
 
+        // Assert that the module has been created with the set name and values J.S
         [TestMethod]
         public void ModuleCreatedWithSetNameAndValues()
         {
