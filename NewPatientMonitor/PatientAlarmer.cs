@@ -17,7 +17,6 @@ namespace NewPatientMonitor
         public List<IAlarmTester> AlarmTesters
         {
             get { return _AlarmTesters; }
-            set { throw new NotImplementedException(); }
         }
 
         private void OnModuleAlarm() => ModuleAlarm?.Invoke(this, EventArgs.Empty);
