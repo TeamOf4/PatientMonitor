@@ -74,7 +74,6 @@
     <Compile Include="TestAlarmTester.cs" />
     <Compile Include="TestPatientData.cs" />
     <Compile Include="TestPatientDataReader.cs" />
-    <Compile Include="TestMessage.cs" />
     <Compile Include="TestPatientDataWriter.cs" />
     <Compile Include="TestPatientFactory.cs" />
     <Compile Include="TestPatientMonitoringController.cs" />

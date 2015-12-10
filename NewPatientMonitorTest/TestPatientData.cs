@@ -39,10 +39,8 @@ namespace NewPatientMonitorTest
         void PatientDataTestPass1 (PatientData pd)
         {
             /* 
-            
-            Tests whether the values below matches the values setup on the constant string (FirstLine)
-            It checks against every module starting with Module 1 which is Module[0]. 
-            (NW)
+            Tests whether the values below matches the values setup on the constant string above (FirstLine)
+            It checks against every module starting with the first module which is Module[0].(NW)
             */
             Assert.AreEqual(70f, pd.Values[0]);
             Assert.AreEqual(35f, pd.Values[1]);
@@ -52,6 +50,10 @@ namespace NewPatientMonitorTest
 
         void PatientdataTestPass2 (PatientData pd)
         {
+            /*
+            Same as the above, this test checks whether the values below matches the values setp on the constant string above (SecondLine)
+            It checks against every module starting with the the first module which is Module[0]. (NW)
+            */
             Assert.AreEqual(54f, pd.Values[0]);
             Assert.AreEqual(43f, pd.Values[1]);
             Assert.AreEqual(76f, pd.Values[2]);
