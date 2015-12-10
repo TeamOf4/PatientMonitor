@@ -2,7 +2,7 @@
 
 /*
 Stores a list of Modules installed in the bedside monitor. Can add and remove Modules from
-the bedside monitor
+the bedside monitor S.S
 */
 
 namespace NewPatientMonitor
