@@ -29,7 +29,9 @@ namespace NewPatientMonitor
 
             for (int i = 0; i < AlarmTesters.Count; i++)
                 if (_AlarmTesters[i].ValueOutsideLimits(reading.Values[i]))
-                    if (ModuleAlarm != null) ModuleAlarm(this, null);                   
+                {
+                    ModuleAlarm?.Invoke(this, null);
+                }
         }
 
         private void SetLimits(IBedsideMonitor monitor)
