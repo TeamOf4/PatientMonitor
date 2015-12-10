@@ -9,6 +9,7 @@ namespace NewPatientMonitorTest
     {
 
         /*
+
         Brief Testing done to the Alarm tester class
 
         1) Creation of the alarm is good (Tests whether the alarm created matches the one setup [TestInitialize] 
@@ -16,7 +17,8 @@ namespace NewPatientMonitorTest
         3) Whether the alarm is outside the limits
         4) Test if the value setup is not zero
         5) Test if the value setup in not less (minus values)
-            */
+
+        */
 
         // ASSERT
 
@@ -32,15 +34,9 @@ namespace NewPatientMonitorTest
             testModule.Setup(b => b.Name).Returns("Test");
             testModule.Setup(c => c.UpperLimit).Returns(54f);
 
+            IAlarmTester alarmTesterCreated = new AlarmTester(testModule.Object);
 
-            Assert.AreEqual(12f, testModule.Object.LowerLimit); // Replaced by Nick
-            Assert.AreEqual("Test", testModule.Object.Name); // Replaced by Nick
-            Assert.AreEqual(54f, testModule.Object.UpperLimit); // Replaced By Nick
-
-
-            //IAlarmTester alarmTesterCreated = new AlarmTester(testModule.Object); -- Jack Sanger
-
-            //Assert.AreEqual(testModule.Object.Name, alarmTesterCreated.NameOfAlarm); -- Jack Sanger
+            Assert.AreEqual(testModule.Object.Name, alarmTesterCreated.NameOfAlarm); 
         }
 
         [TestMethod]
@@ -48,19 +44,16 @@ namespace NewPatientMonitorTest
         {
             /* This test method test whether the created alarm is the same as the one setup for the test initialize above.
                If the elements below this comment is the same as the one created the test will pass, else the test will fail. (NW)*/
+
             var testModule = new Mock<IModule>(MockBehavior.Strict);
 
             testModule.Setup(a => a.LowerLimit).Returns(10f);
             testModule.Setup(b => b.Name).Returns("Test");
             testModule.Setup(c => c.UpperLimit).Returns(54f);
 
-            Assert.AreEqual(10f, testModule.Object.LowerLimit);
-            Assert.AreEqual("Test", testModule.Object.Name);
-            Assert.AreEqual(54f, testModule.Object.UpperLimit);
+            IAlarmTester alarmTesterCreated= new AlarmTester(testModule.Object);
 
-           // IAlarmTester alarmTesterCreated= new AlarmTester(testModule.Object);
-
-           // Assert.AreEqual(testModule.Object.UpperLimit, alarmTesterCreated.UpperLimit);
+            Assert.AreEqual(testModule.Object.UpperLimit, alarmTesterCreated.UpperLimit);
         }
 
         [TestMethod]
@@ -68,19 +61,16 @@ namespace NewPatientMonitorTest
         {
             /* This test method test whether the created alarm is the same as the one setup for the test initialize above.
                If the elements below this comment is the same as the one created the test will pass, else the test will fail. (NW)*/
+
             var testModule = new Mock<IModule>(MockBehavior.Strict);
 
             testModule.Setup(a => a.LowerLimit).Returns(12f);
             testModule.Setup(b => b.Name).Returns("Test");
             testModule.Setup(c => c.UpperLimit).Returns(54f);
 
-            Assert.AreEqual(12f, testModule.Object.LowerLimit);
-            Assert.AreEqual("Test", testModule.Object.Name);
-            Assert.AreEqual(54f, testModule.Object.UpperLimit);
+            IAlarmTester alarmTesterCreated = new AlarmTester(testModule.Object);
 
-            //IAlarmTester alarmTesterCreated = new AlarmTester(testModule.Object);
-
-            //Assert.AreEqual(testModule.Object.LowerLimit, alarmTesterCreated.LowerLimit);
+            Assert.AreEqual(testModule.Object.LowerLimit, alarmTesterCreated.LowerLimit);
         }
 
         [TestMethod]
