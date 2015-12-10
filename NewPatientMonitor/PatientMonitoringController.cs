@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+* Writes data of alarm and bednumber that triggered alarm to file J.S
+*/
+
+using System;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
@@ -39,6 +43,7 @@ namespace NewPatientMonitor
             SetupUi();
         }
 
+        // Sets up the values displayed in MainWindow
         private void SetupUi()
         {
             _mainWindow.patientSelector.SelectionChanged
@@ -84,6 +89,7 @@ namespace NewPatientMonitor
             _alarmer.AlarmTesters[4].UpperLimit = _mainWindow.diastolicUpper.AlarmValue;
         }
 
+        // Sets up the model of the program
         private void SetupComponents()
         {
             _patientData = (PatientData) _patientFactory.CreateAndReturnObj(PatientClassesEnumeration.PatientData);
@@ -120,6 +126,7 @@ namespace NewPatientMonitor
             _tickTimer.Start();
         }
 
+        // Sounds an alarm that is mutable
         private void SoundMutableAlarm(object sender, EventArgs e)
         {
             if (_alarmMuter.IsChecked == false)
