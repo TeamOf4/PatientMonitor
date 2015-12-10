@@ -1,4 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿/*
+* Unit tests for the bay class
+*/
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NewPatientMonitor;
 
 namespace NewPatientMonitorTest
