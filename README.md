@@ -1,7 +1,8 @@
 # NewPatientMonitor
 
-Testing
+# Software Engineering MOD003263
 
-This is Sam
-
-This is luc.
+Nick Wan
+Jack Sanger
+Samantha Sismey
+Luc Kandera
