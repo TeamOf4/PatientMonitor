@@ -6,10 +6,10 @@ using NewPatientMonitor;
 namespace NewPatientMonitorTest
 {
     [TestClass()]
-    public class TestPatientMonitoringController
+    public class TestNewPatientMonitoringController
     {
         [TestMethod()]
-        public void TestPatientMonitoringControllerConstructor()
+        public void TestNewPatientMonitoringControllerConstructor()
         {
             Mock<IPatientFactory> testFactory = new Mock<IPatientFactory>();
             Mock<IPatientData> testPatient = new Mock<IPatientData>();

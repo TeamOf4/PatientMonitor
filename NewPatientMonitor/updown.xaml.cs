@@ -9,14 +9,12 @@ namespace NewPatientMonitor
     /// </summary>
     public partial class NumericUpDown : UserControl
     {
-        Label textValue;
-
         public event EventHandler ValueChanged;
 
         private int _numValue = 0;
         public int AlarmValue
         {
-            get { return _numValue; }
+            get{return _numValue;}
             set
             {
                 _numValue = value;

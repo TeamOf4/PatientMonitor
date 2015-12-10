@@ -71,12 +71,15 @@
     <Compile Include="IPatientAlarmer.cs" />
     <Compile Include="IPatientData.cs" />
     <Compile Include="IPatientDataReader.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="IPatientFactory.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpDown.xaml.cs">
+      <DependentUpon>UpDown.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IPatientFactory.cs" />
     <Compile Include="Module.cs" />
     <Compile Include="PatientAlarmer.cs" />
     <Compile Include="PatientClassesEnumeration.cs" />
@@ -119,8 +122,12 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindow.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UpDown.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

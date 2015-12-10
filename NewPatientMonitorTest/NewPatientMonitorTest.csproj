@@ -67,6 +67,7 @@
     <Compile Include="TestPatientDataReader.cs" />
     <Compile Include="TestPatientDataAccessor.cs" />
     <Compile Include="TestMessage.cs" />
+    <Compile Include="TestPatientMonitoringController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NewPatientMonitor\NewPatientMonitor.csproj">
