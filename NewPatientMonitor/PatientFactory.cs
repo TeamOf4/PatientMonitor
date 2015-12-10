@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+* Returns patient classes J.S
+*/
+
+using System;
 
 namespace NewPatientMonitor
 {
