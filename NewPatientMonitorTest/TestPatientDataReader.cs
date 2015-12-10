@@ -28,6 +28,8 @@ namespace NewPatientMonitorTest
         [TestMethod]
         public void GoodUnconnectedCreation()
         {
+            // Checks to see whether the file called DataTest.csv contains the values setup above. 
+            // If the values in the DataTest.csv are equal to the the values setup. The test will pass. (NW)
             var dataReader = new PatientDataReader();
             dataReader.Connect(@"..\..\..\DataTest.csv");
             Assert.AreEqual(FirstLine, dataReader.GetData());
