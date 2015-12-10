@@ -11,6 +11,7 @@ namespace NewPatientMonitorTest
     [TestClass]
     public class TestPatientAlarmer
     {
+        // Asserts that the alarm was not called when the values are within the limits J.S
         [TestMethod()]
         public void ReadingTestAlarmNotCalled()
         {
@@ -36,6 +37,8 @@ namespace NewPatientMonitorTest
 
             Assert.IsFalse(alarmCalled);
         }
+
+        // Asserts that the alarm was  called when the values are within the limits J.S
 
         [TestMethod()]
         public void ReadingTestAlarmWasCalled()
