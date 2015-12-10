@@ -17,7 +17,7 @@ namespace NewPatientMonitorTest
         3) Whether the alarm is outside the limits
         4) Test if the value setup is not zero
         5) Test if the value setup in not less (minus values)
-
+        (NW)
         */
 
         // ASSERT
