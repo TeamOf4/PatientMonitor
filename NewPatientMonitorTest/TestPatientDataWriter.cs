@@ -29,8 +29,7 @@ namespace NewPatientMonitorTest
         public void TestBedSet()
         {
             int testBedNumber = 1;
-            PatientDataWriter testDataWriter = new PatientDataWriter();
-            testDataWriter.BedNumber = testBedNumber;
+            PatientDataWriter testDataWriter = new PatientDataWriter {BedNumber = testBedNumber};
             Assert.AreEqual(testBedNumber, testDataWriter.BedNumber);
         }
 
@@ -39,8 +38,7 @@ namespace NewPatientMonitorTest
         {
             Mock<IPatientAlarmer> testPatientAlarm = new Mock<IPatientAlarmer>();
 
-            PatientDataWriter testDataWriter = new PatientDataWriter();
-            testDataWriter.AlarmToBeStored = testPatientAlarm.Object;
+            PatientDataWriter testDataWriter = new PatientDataWriter {AlarmToBeStored = testPatientAlarm.Object};
             Assert.AreEqual(testPatientAlarm.Object, testDataWriter.AlarmToBeStored);
         }
     }
