@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace NewPatientMonitor
 {
-    public class PatientAlarmer : IPatientAlarmer
+    public sealed class PatientAlarmer : IPatientAlarmer
     {
         //public PatientAlarmer(List<IAlarmTester> alarmTesters)
         //{
@@ -12,17 +12,12 @@ namespace NewPatientMonitor
 
         public event EventHandler ModuleAlarm;
 
-        private List<IAlarmTester> _AlarmTesters { get; } = new List <IAlarmTester>();
+        private List<IAlarmTester> _AlarmTesters => new List<IAlarmTester>();
 
         public List<IAlarmTester> AlarmTesters => _AlarmTesters;
 
-        protected virtual void OnModuleAlarm() => ModuleAlarm?.Invoke(this, EventArgs.Empty);
+        private void OnModuleAlarm() => ModuleAlarm?.Invoke(this, EventArgs.Empty);
 
-        
-        public PatientAlarmer()
-        {
-            
-        }
 
         public void ReadingTest(IPatientData reading, IBedsideMonitor monitor)
         {
