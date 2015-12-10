@@ -1,4 +1,9 @@
-﻿namespace NewPatientMonitor
+﻿/*
+* Writes data of alarm and bednumber that triggered alarm to file J.S
+*/
+
+
+namespace NewPatientMonitor
 {
     public interface IPatientDataWriter
     {
