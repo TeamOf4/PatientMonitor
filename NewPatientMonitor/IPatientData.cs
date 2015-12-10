@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
+﻿/*
+* Interface class for the Patient Data class
+* Contains a list of values as a float
+* Gets the float values (NW)
+*/
+
+using System.Collections.Generic;
 
 namespace NewPatientMonitor
 {
     public interface IPatientData
     {
         List<float> Values { get; }
-
-        //float BreathingRate { get; }
-        //float DiastolicRate { get; }
-        //float PulseRate { get; }
-        //float SystolicRate { get; }
-        //float TemperatureRate { get; }
     }
 }
